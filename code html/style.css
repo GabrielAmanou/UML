@@ -14,8 +14,9 @@ body {
 	    text-align: center;
         padding: 30px;
 	    background: rgb(199, 180, 167);
-	 /*   
+	    
 	}
+	/*
 	#footer {
 	    height:50px;
 	    width:100%;
@@ -69,6 +70,7 @@ body {
 
 
 */
+
 .leftcol{
     float: left;
     width: 75%;
