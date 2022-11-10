@@ -3,7 +3,7 @@ USE shelter;
 
 DROP TABLE if exists staff;
 DROP TABLE if exists pets;
-DROP TABLE if exists shelte;
+DROP TABLE if exists shelter;
 DROP TABLE if exists client;
 
 CREATE TABLE client(
@@ -14,27 +14,7 @@ CREATE TABLE client(
     client_nbr_of_pets int
 );
 
-CREATE TABLE staff ( 
-    staff_id int auto_increment primary key,
-    staff_name varchar(100) unique,
-    staff_email varchar(100) unique,
-    staff_working_hours varchar(100),
-    staff_task varchar(100),
-    staff_shelte int,
-    CONSTRAINT fk_shelte FOREIGN KEY (staff_shelte) REFERENCES shelte (shelter_id)
-);
-
-CREATE TABLE pets(
-	pet_id int auto_increment primary key,
-    pet_owner_name varchar(100),
-	pet_name varchar(100),
-    pet_specie varchar(100),
-    pet_age int,
-    pet_diet varchar(100)
-    CONSTRAINT fk_owner FOREIGN KEY (pet_owner_name) REFERENCES client (client_id)
-    );
-
-CREATE TABLE shelte(
+CREATE TABLE shelter(
 	shelter_id int auto_increment primary key,
     shelter_nbr_of_staff int,
     shelter_nbr_of_pets int,
@@ -43,15 +23,35 @@ CREATE TABLE shelte(
     shelter_location varchar(100)
 	);
 
+CREATE TABLE staff ( 
+    staff_id int auto_increment primary key,
+    staff_name varchar(100) unique,
+    staff_email varchar(100) unique,
+    staff_working_hours varchar(100),
+    staff_task varchar(100),
+    staff_shelter int,
+    CONSTRAINT fk_shelter FOREIGN KEY (staff_shelter) REFERENCES shelter (shelter_id)
+);
+
+CREATE TABLE pets(
+	pet_id int auto_increment primary key,
+    pet_owner_id int,
+	pet_name varchar(100),
+    pet_specie varchar(100),
+    pet_age int,
+    pet_diet varchar(100)
+    CONSTRAINT fk_owner FOREIGN KEY (pet_owner_id) REFERENCES client (client_id)
+    );
+
 CREATE TABLE stays_in(
     pet_id int,
     shelter_id int,
     CONSTRAINT fk_pet FOREIGN KEY (pet_id) REFERENCES pets (pet_id),
-    CONSTRAINT fk_shelte FOREIGN KEY (shelte_id) REFERENCES shelte (shelte_id)
+    CONSTRAINT fk_shelter_stays FOREIGN KEY (shelter_id) REFERENCES shelter (shelter_id)
 );
         
     
-INSERT INTO staff VALUES
+/*INSERT INTO staff VALUES
 (1, 'Sandy', 'sandy@pet.com', '9h-18h','Administration'),
 (2, 'Mickeal', 'mickael@pet.com', '7h-16h','Pets care'),
 (3, 'Leo', 'leo@pet.com', '15h-22h','Pets care'),
