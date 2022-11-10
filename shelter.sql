@@ -4,13 +4,26 @@ USE shelter;
 DROP TABLE if exists staff;
 DROP TABLE if exists pets;
 DROP TABLE if exists shelte;
+DROP TABLE if exists client;
+
+CREATE TABLE client(
+    client_id int auto_increment primary key,
+    client_name varchar(100),
+    client_email varchar(100),
+    client_password varchar(100),
+    client_nbr_of_pets int
+);
 
 CREATE TABLE staff ( 
     staff_id int auto_increment primary key,
     staff_name varchar(100) unique,
     staff_email varchar(100) unique,
-    staff_location varchar(100)
+    staff_working_hours varchar(100),
+    staff_task varchar(100),
+    staff_shelte int,
+    CONSTRAINT fk_shelte FOREIGN KEY (staff_shelte) REFERENCES shelte (shelter_id)
 );
+
 CREATE TABLE pets(
 	pet_id int auto_increment primary key,
     pet_owner_name varchar(100),
@@ -18,6 +31,7 @@ CREATE TABLE pets(
     pet_specie varchar(100),
     pet_age int,
     pet_diet varchar(100)
+    CONSTRAINT fk_owner FOREIGN KEY (pet_owner_name) REFERENCES client (client_id)
     );
 
 CREATE TABLE shelte(
@@ -28,24 +42,35 @@ CREATE TABLE shelte(
     shelter_size varchar(100),
     shelter_location varchar(100)
 	);
+
+CREATE TABLE stays_in(
+    pet_id int,
+    shelter_id int,
+    CONSTRAINT fk_pet FOREIGN KEY (pet_id) REFERENCES pets (pet_id),
+    CONSTRAINT fk_shelte FOREIGN KEY (shelte_id) REFERENCES shelte (shelte_id)
+);
         
     
 INSERT INTO staff VALUES
-(1, 'Sandy', 'sandy@pet.com', 'Budapest'),
-(2, 'Mickeal', 'mickael@pet.com', 'Budapest'),
-(3, 'Leo', 'leo@pet.com', 'Budapest'),
-(4, 'Andrea', 'andrea@pet.com', 'Oslo'),
-(5, 'Jojo', 'jojo@pet.com', 'Oslo'),
-(6, 'Daisy', 'daisy@pet.com', 'Oslo'),
-(7, 'Victor', 'victor@pet.com', 'New York'),
-(8, 'Bethany', 'bethany@pet.com', 'New York'),
-(9, 'Josh', 'josh@pet.com', 'New York'),
-(10, 'Liam', 'liam@pet.com', 'Paris');
+(1, 'Sandy', 'sandy@pet.com', '9h-18h','Administration'),
+(2, 'Mickeal', 'mickael@pet.com', '7h-16h','Pets care'),
+(3, 'Leo', 'leo@pet.com', '15h-22h','Pets care'),
+(4, 'Andrea', 'andrea@pet.com', '9h-18h','Administration'),
+(5, 'Jojo', 'jojo@pet.com', '7h-16h','Pets care'),
+(6, 'Daisy', 'daisy@pet.com', '15h-22h','Pets care'),
+(7, 'Victor', 'victor@pet.com', '9h-18h','Administration'),
+(8, 'Bethany', 'bethany@pet.com', '7h-16h','Pets care'),
+(9, 'Josh', 'josh@pet.com', '15h-22h','Pets care'),
+(10, 'Liam', 'liam@pet.com', '9h-18h','Administration'),
+(11, 'Sasha', 'sasha@pet.com', '7h-16h','Pets care'),
+(12, 'Leandre', 'leande@pet.com', '15h-22h','Pets care');
 
 INSERT INTO shelte VALUES
 (1, 3, 4, 10, 'Small', 'Oslo'),
-(2, 18, 27, 50, 'Large', 'Budapest'),
-(3, 8, 16, 20, 'Medium', 'London');
+(2, 3, 27, 20, 'Large', 'Budapest'),
+(3, 3, 16, 15, 'Medium', 'London'),
+(4, 3, 9, 6, 'Very small', 'Paris');
+
 
 INSERT INTO pets VALUES
 (1, 'Monica', 'Doggo', 'Dog', 11, 'Berries & Nuts'),
