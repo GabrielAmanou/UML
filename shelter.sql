@@ -3,7 +3,7 @@ USE shelter;
 
 DROP TABLE if exists staff;
 DROP TABLE if exists pets;
-DROP TABLE if exists shelter;
+DROP TABLE if exists shelterr;
 DROP TABLE if exists client;
 
 CREATE TABLE client(
@@ -30,7 +30,7 @@ CREATE TABLE staff (
     staff_working_hours varchar(100),
     staff_task varchar(100),
     staff_shelter int,
-    CONSTRAINT fk_shelter FOREIGN KEY (staff_shelter) REFERENCES shelter (shelter_id)
+    CONSTRAINT fk_shelter FOREIGN KEY (staff_shelter) REFERENCES shelterr (shelter_id)
 );
 
 CREATE TABLE pets(
@@ -41,13 +41,13 @@ CREATE TABLE pets(
     pet_age int,
     pet_diet varchar(100)
     CONSTRAINT fk_owner FOREIGN KEY (pet_owner_id) REFERENCES client (client_id)
-    );
+    );r
 
 CREATE TABLE stays_in(
     pet_id int,
     shelter_id int,
     CONSTRAINT fk_pet FOREIGN KEY (pet_id) REFERENCES pets (pet_id),
-    CONSTRAINT fk_shelter_stays FOREIGN KEY (shelter_id) REFERENCES shelter (shelter_id)
+    CONSTRAINT fk_shelter_stays FOREIGN KEY (shelter_id) REFERENCES shelterr (shelter_id)
 );
         
     
@@ -65,7 +65,7 @@ CREATE TABLE stays_in(
 (11, 'Sasha', 'sasha@pet.com', '7h-16h','Pets care'),
 (12, 'Leandre', 'leande@pet.com', '15h-22h','Pets care');
 
-INSERT INTO shelte VALUES
+INSERT INTO shelter VALUES
 (1, 3, 4, 10, 'Small', 'Oslo'),
 (2, 3, 27, 20, 'Large', 'Budapest'),
 (3, 3, 16, 15, 'Medium', 'London'),
