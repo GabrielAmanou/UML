@@ -11,15 +11,10 @@ body {
 
 .header {
   width: 100%;
-  text-align: right;
-  background: rgb(199, 180, 167);
-  background-image: url("media/header.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;;
-  position: relative;
-
-
+  padding: 30px;
+  background: left / cover url("media/header.jpg");
+  height: 100%;
+  justify-content: right;
 	}
 	
 .leftcol{
