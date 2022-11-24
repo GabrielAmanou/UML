@@ -9,13 +9,17 @@ body {
   font-family: Arial
 	}
 
-.header {
-  width: 100%;
-  padding: 30px;
-  background: left / cover url("media/header.jpg");
-  height: 100%;
-  justify-content: right;
-	}
+.header{
+  position: relative;
+}
+
+.header-txt {
+  position: absolute;
+  font-weight: 500;
+  font-size: 3vh;
+  top: 40%;
+  left: 50%;
+}
 	
 .leftcol{
 	float: left;
@@ -29,17 +33,41 @@ body {
     width: 70%;
 }
 
-.rightcol{
+.column {
   float: left;
-  width: 15%;
-  background-color: rgb(199, 180, 167);
-	padding: 20px;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+.blok{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+.box::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.box{
+  padding: 0px 16px;
 }
 
 .bloc{
   background-color: white;
   padding: 20px;
   margin-top: 20px;
+}
+
+.title {
+  color: grey;
+}
+
+.rightcol{
+  float: left;
+  width: 15%;
+  background-color: rgb(199, 180, 167);
+	padding: 20px;
 }
 
 .row:after {
@@ -57,8 +85,14 @@ body {
 
 /* Ajusting the columns if the screen size is changed */
 
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }}
+
 @media screen and (max-width: 800px) {
-  .leftcol, .midcol, .rightcol {   
+  .leftcol, .midcol, .rightcol, .header {   
     width: 100%;
     padding: 0;
   }
