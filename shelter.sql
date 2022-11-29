@@ -9,8 +9,8 @@ DROP TABLE if exists client;
 
 CREATE TABLE shelter(
 	shelter_id int auto_increment primary key,
-    shelter_nbr_of_staff int,
-    shelter_nbr_of_pets int,
+    shelter_grade int,
+    shelter_equipment varchar(100),
     shelter_nbr_max_of_pets int,
     shelter_size varchar(100),
     shelter_location varchar(100)
@@ -21,9 +21,6 @@ CREATE TABLE client(
     client_name varchar(100),
     client_email varchar(100),
     client_password varchar(100),
-    client_nbr_of_pets int/*nbr de fois que le owner id apparait ds pets*/,
-    client_shelter varchar(100),
-    CONSTRAINT fk_shelter FOREIGN KEY (client_shelter) REFERENCES shelter (shelter_location)
     );
 
 CREATE TABLE staff ( 
@@ -53,42 +50,60 @@ CREATE TABLE stays_in(
     CONSTRAINT fk_shelter_stays FOREIGN KEY (shelter_id) REFERENCES shelter (shelter_id)
     );
         
-    
-INSERT INTO staff VALUES
-(1, 'Sandy', 'sandy@pet.com', '9h-18h','Administration'),
-(2, 'Mickeal', 'mickael@pet.com', '7h-16h','Pets care'),
-(3, 'Leo', 'leo@pet.com', '15h-22h','Pets care'),
-(4, 'Andrea', 'andrea@pet.com', '9h-18h','Administration'),
-(5, 'Jojo', 'jojo@pet.com', '7h-16h','Pets care'),
-(6, 'Daisy', 'daisy@pet.com', '15h-22h','Pets care'),
-(7, 'Victor', 'victor@pet.com', '9h-18h','Administration'),
-(8, 'Bethany', 'bethany@pet.com', '7h-16h','Pets care'),
-(9, 'Josh', 'josh@pet.com', '15h-22h','Pets care'),
-(10, 'Liam', 'liam@pet.com', '9h-18h','Administration'),
-(11, 'Sasha', 'sasha@pet.com', '7h-16h','Pets care'),
-(12, 'Leandre', 'leande@pet.com', '15h-22h','Pets care');
 
 INSERT INTO shelter VALUES
-(1, 3, 4, 10, 'Small', 'Oslo'),
-(2, 3, 27, 20, 'Large', 'Budapest'),
-(3, 3, 16, 15, 'Medium', 'London'),
-(4, 3, 9, 6, 'Very small', 'Paris');
+(1, 3, "average", 11, 'Small', 'Oslo'),
+(2, 5, "well equipped", 20, 'Large', 'Budapest'),
+(3, 2, "minimum", 14, 'Medium', 'London'),
+(4, 4, "good", 6, 'Very small', 'Paris');
 
+INSERT into client VALUES
+(1, 'Monica', 'monicalovesdog@gmail.com', 'Doggo11'),
+(2, 'Jerry', "jerryholidays@gmail.com", 'mywife00'),
+(3, 'Lilian', 'lilianwithtwol@gmail.com','nodonkeys101'),
+(4, 'Sophie', 'sophie@gmail.com','SoLa1876'),
+(5, 'Philippe', 'philippe@gmail.com', 'Philoulou02'),
+(6, 'Edouard', 'edouard@gmail.com', 'Edouardgg407*'),
+(7, 'Lara', 'lara@gmail.com', 'LALALA9'),
+(8, 'Gigi', 'gigi@gmail.com', 'Gygy653'),
+(9, 'Mickael', 'mickael@gmail.com', 'Micky111'),
+(10, 'Jared', 'jared@gmail.com', 'HelloJared666'),
+(11, 'Sonia', 'sonia@gmail.com', 'Ronaldo7')
+
+    
+INSERT INTO staff VALUES
+(1, 'Sandy', 'sandy@pet.com', '9h-18h','Administration',1),
+(2, 'Mickael', 'mickael@pet.com', '7h-16h','Pets care',1),
+(3, 'Leo', 'leo@pet.com', '15h-22h','Pets care',1),
+(4, 'Andrea', 'andrea@pet.com', '9h-18h','Administration',2),
+(5, 'Jojo', 'jojo@pet.com', '7h-16h','Pets care',2),
+(6, 'Daisy', 'daisy@pet.com', '15h-22h','Pets care',2),
+(7, 'Victor', 'victor@pet.com', '9h-18h','Administration',3),
+(8, 'Bethany', 'bethany@pet.com', '7h-16h','Pets care',3),
+(9, 'Josh', 'josh@pet.com', '15h-22h','Pets care',3),
+(10, 'Liam', 'liam@pet.com', '9h-18h','Administration',4),
+(11, 'Sasha', 'sasha@pet.com', '7h-16h','Pets care',4),
+(12, 'Leandre', 'leande@pet.com', '15h-22h','Pets care',4);
 
 INSERT INTO pets VALUES
 (1, 1, 'Doggo', 'Dog', 11, 'Berries & Nuts'),
 (2, 2, 'James', 'Tropical Fish', 1, 'Fish food'),
-(3, 3,'Honey', 'Horse', 18, 'Oats'),
-(4, 4, 'Tom', 'Cookie', 'Guinea Pig', 2, 'Pellets'),
-(5, 5, 'Henry', 'Emerald', 'Iguana', 7, 'Flies'),
-(6, 6, 'Andrew', 'Chucky', 'Cat', 15, 'Tuna'),
-(7, 7, 'Christopher', 'Skippy', 'Hamster', 3, 'Cereals'),
-(8, 8, 'Helene', 'Marlo', 'Cat', 4, 'Raw Tuna'),
-(9, 9, 'Jim', 'Zazu', 'Parrot', 86, 'Fruits'),
-(10, 10, 'Lucie', 'Nova', 'Dog', 10, 'Croquettes'),
-(11, 3, 'Suzie', 'Horse', 8, 'Oats');
+(3, 2,'Honey', 'Horse', 18, 'Oats'),
+(4, 3, 'Cookie', 'Guinea Pig', 2, 'Pellets'),
+(5, 4, 'Emerald', 'Iguana', 7, 'Flies'),
+(6, 4, 'Chucky', 'Cat', 15, 'Tuna'),
+(7, 4, 'Skippy', 'Hamster', 3, 'Cereals'),
+(8, 5, 'Marlo', 'Cat', 4, 'Raw Tuna'),
+(9, 6, 'Zazu', 'Parrot', 86, 'Fruits'),
+(10, 6, 'Nova', 'Dog', 10, 'Croquettes'),
+(11, 7, 'Suzie', 'Horse', 8, 'Oats'),
+(12, 7, 'Moly', 'Cat', 2, 'Raw Tuna'),
+(13, 8, 'Kiki', 'lizard', 8, 'bugs'),
+(14, 9, 'Lonie', 'spider' 3, 'bugs'),
+(15, 10, 'Tatou', 'dog', 8, 'croquettes'),
+(16, 11, 'Pinette', 'dog', 6, 'croquettes'),
 
-INSERT into client VALUES
-(1, 'Monica', 'monicalovesdog@gmail.com', 'Doggo11', 1, 'London'),
-(2, 'Jerry', "Jerryholidays@gmail.com", 'mywife00', 2, 'Paris'),
-(3, 'Lilian','lilianwithtwol@gmail.com','nodonkeys101', 5,'Budapest'),
+--INSERT INTO stays_in VALUES
+...
+
+
