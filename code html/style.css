@@ -33,16 +33,8 @@ body {
     width: 70%;
 }
 
-.column {
-  float: left;
-  width: 33.3%;
-  margin-bottom: 16px;
-  padding: 0 8px;
-}
-.blok{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: 8px;
-}
+
+
 .box::after, .row::after {
   content: "";
   clear: both;
@@ -83,13 +75,6 @@ body {
   margin-top: 20px;
 }
 
-/* Ajusting the columns if the screen size is changed */
-
-@media screen and (max-width: 650px) {
-  .column {
-    width: 100%;
-    display: block;
-  }}
 
 @media screen and (max-width: 800px) {
   .leftcol, .midcol, .rightcol, .header {   
