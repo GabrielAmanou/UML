@@ -33,7 +33,10 @@ body {
     width: 70%;
 }
 
-
+#img {
+  float: left;    
+  margin: 0 15px 0 0;
+}
 
 .box::after, .row::after {
   content: "";
@@ -51,8 +54,20 @@ body {
   margin-top: 20px;
 }
 
-.title {
+.Occupation {
   color: grey;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.Location {
+  color: rgb(53, 32, 32);
+  font-size:larger;
+  font-weight: bold;
+}
+.box p{
+  font-size: 18px;
+  font-weight: normal;
 }
 
 .rightcol{
