@@ -68,7 +68,7 @@ INSERT into client VALUES
 (8, 'Gigi', 'gigi@gmail.com', 'Gygy653'),
 (9, 'Mickael', 'mickael@gmail.com', 'Micky111'),
 (10, 'Jared', 'jared@gmail.com', 'HelloJared666'),
-(11, 'Sonia', 'sonia@gmail.com', 'Ronaldo7')
+(11, 'Sonia', 'sonia@gmail.com', 'Ronaldo7');
 
     
 INSERT INTO staff VALUES
@@ -101,9 +101,25 @@ INSERT INTO pets VALUES
 (13, 8, 'Kiki', 'lizard', 8, 'bugs'),
 (14, 9, 'Lonie', 'spider' 3, 'bugs'),
 (15, 10, 'Tatou', 'dog', 8, 'croquettes'),
-(16, 11, 'Pinette', 'dog', 6, 'croquettes'),
+(16, 11, 'Pinette', 'dog', 6, 'croquettes');
 
---INSERT INTO stays_in VALUES
-...
+INSERT INTO stays_in VALUES
+(1,1),
+(2,1),
+(3,1),
+(4,2),
+(5,2),
+(6,2),
+(7,2),
+(8,2),
+(9,2),
+(10,2),
+(11,3),
+(12,3),
+(13,3),
+(14,3),
+(15,4),
+(16,4);
+
 
 
