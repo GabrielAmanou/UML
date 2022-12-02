@@ -1,37 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-<link rel="stylesheet" href="/static/style.css">
-
-</head>
-
-<body>
-
-<div class="header">
-  <img src="static/media/header.jpg" style="width: 100%;" >
-  <div class="header-txt"> WELCOME TO UNITED ANIMALIA</div>
-</div>
-
-
-    <div class="navigation">
-        <a href="about.html">About us</a>
-        <a href="meet_staff.html">Meet the staff!</a> 
-        <a href="donate.html">Donate </a>
-        <a href="shelters.html">Shelters</a>
-        <a href="owners.html">Owner's coner</a>
-        <a href="log_in.html">Log In</a> 
-        <a href="sign_up.html">Sign up</a>
-    </div>
+<%- include("partial_header.ejs"); %>
 
 <div class="row">
   <div class="leftcol">
     <div class="bloc">
-      <a href="about.html">About us</a>
+      <a href="/about">About us</a>
       <p>Get to know us a bit more!</p>
     </div>
     <div class="bloc">
-      <a href="shelters.html">Shelters</a>
+      <a href="/shelters">Shelters</a>
       <p>Wondering where we work? Or where you can send your pets to have some playtime? Click here!</p>
     </div>
   </div>

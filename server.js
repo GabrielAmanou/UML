@@ -64,3 +64,7 @@ app.use(session({
 
 // app.use(routeBase, callback);
 app.use("/static", express.static(__dirname + '/static'));
+app.use("/about", require("./controllers/about.route"));
+app.use("/meet_staff", require("./controllers/meet_staff.route"));
+app.use("/shelters", require("./controllers/shelters.route"));
+

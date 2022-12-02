@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 
-// http://localhost:9000/auth
+// http://localhost:9000/
 router.get('/', (req, res) => res.render('site_view'));
 
 module.exports = router;
