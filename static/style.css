@@ -1,0 +1,193 @@
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	padding: none;
+  background: rgb(199, 180, 167);
+  font-family: Arial
+	}
+
+.header{
+  position: relative;
+}
+
+.header-txt {
+  position: absolute;
+  font-weight: 500;
+  font-size: 3vh;
+  top: 40%;
+  left: 50%;
+}
+	
+.leftcol{
+	float: left;
+	background-color: rgb(199, 180, 167);
+	width: 15%;
+	padding: 20px;
+}
+
+.midcol{
+    float: left;
+    width: 70%;
+}
+
+#img {
+  float: left;    
+  margin: 0 15px 0 0;
+}
+
+.box::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.box{
+  padding: 0px 16px;
+}
+
+.bloc{
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.Occupation {
+  color: grey;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.Location {
+  color: rgb(53, 32, 32);
+  font-size:larger;
+  font-weight: bold;
+}
+.box p{
+  font-size: 18px;
+  font-weight: normal;
+}
+
+/* SIGN UP FORM */
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+
+/* sign up buttons */
+btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+btn:hover {
+  opacity:1;
+}
+
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on smaller screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+
+
+.rightcol{
+  float: left;
+  width: 15%;
+  background-color: rgb(199, 180, 167);
+	padding: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  }
+  
+.footer{
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+
+@media screen and (max-width: 800px) {
+  .leftcol, .midcol, .rightcol, .header {   
+    width: 100%;
+    padding: 0;
+  }
+}
+/* Same for the navigation bar */
+@media screen and (max-width: 400px) {
+  .navigation a {
+    float: none;
+    width: 100%;
+  }
+}
+
+/* navigation bar */
+.navigation {
+    overflow: hidden;
+    background-color: #333;
+  }
+
+.navigation a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+	text-decoration: none;
+  }
+  
+.navigation a:hover {
+  background-color: #ddd;
+  color: black;
+  }
