@@ -27,8 +27,7 @@ const pool = mysql.createPool({
     database: process.env.DB_DATABASE
 });
 
-module.exports = {
-    getConnection(){
+    function getConnection(){
         return new Promise(function(result, reject){
             pool.getConnection().
             then(function(conn){
@@ -41,5 +40,6 @@ module.exports = {
 
         // return pool.GetConnection();
     }
- };
+
+    module.exports = { getConnection }
  

@@ -1,4 +1,4 @@
-pool = require("../utils/db.js");
+pool = require("../utils/db");
 
 module.exports = {
 
@@ -89,5 +89,5 @@ module.exports = {
         }
     }
 
-}
+};
 

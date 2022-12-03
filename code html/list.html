@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="code html/style.css">
+
+</head>
+
+<body>
+
+<div class="header">
+  <img src="media/header.jpg" style="width: 100%;" >
+  <div class="header-txt"> WELCOME TO UNITED ANIMALIA</div>
+</div>
+
+
+    <div class="navigation">
+        <a href="about.html">About us</a>
+        <a href="meet_staff.html">Meet the staff!</a> 
+        <a href="donate.html">Donate </a>
+        <a href="shelters.html">Shelters</a>
+        <a href="owners.html">Owner's coner</a>
+        <a href="log_in.html">Log In</a> 
+        <a href="sign_up.html">Sign up</a>
+        <a href="edit.html">Edit</a> 
+    </div>
+
+<div class="row">
+  <div class="leftcol">
+    <div class="bloc">
+      <a href="about.html">About us</a>
+      <p>Get to know us a bit more!</p>
+    </div>
+    <div class="bloc">
+      <a href="shelters.html">Shelters</a>
+      <p>Wondering where we work? Or where you can send your pets to have some playtime? Click here!</p>
+    </div>
+  </div>
+
+
+  <h1>List of our animals</h1>
+  <% if (flashMessage) { %>
+      <p style='color:red'><%= flashMessage %></p>
+  <% } %>
+  
+  <p><a href='pets_create.html'>Add a new animal</a></p>
+  
+  <table class="table table-striped table-bordered table-hover">
+      <tr>
+          <td>ID</td>
+          <td>Owner's ID</td>
+          <td>Owner's Name</td>
+          <td>Pet's Name</td>
+          <td>Pet's Specie</td>
+          <td>Pet's Age</td>
+          <td>Pet's Diet</td>
+          <td>Edit</td>
+          <td>Delete</td>
+
+      </tr>
+      
+  <% for (var c of cars) { %>
+      <tr>
+          <td><%= c.pet_id %></td>
+          <td><%= c.pet_owner_id %></td>
+          <td><%= c.pet_name %></td>
+          <td><%= c.pet_specie %></td>
+          <td><%= c.pet_age %></td>
+          <td><%= c.pet_diet %></td>
+          <td><a href='code html/pets_edit.html<%= c.pet_id %>'>Edit</a></td>
+          <td><a href='code html/pets_delete.html/cars/del/<%= c.pet_id %>'>Delete</a></td>
+      </tr>
+  <% } %>
+  </table>
+  </body>
+  </html>
+
+
+
+<div class="rightcol">
+<h2>Reviews from owners!</h2>
+<div class="bloc">
+  <h4>Mathilda Simons</h4>
+  <p>My cat had an amazing time with the others! My Tilly came back so happy and energised!</p>
+</div>
+          
+<div class="bloc">
+  <h4>Follow us on our socials!</h4>
+  <p>If social media isn't your thing, write to us! <br> 40 Dohany utca <br> Budapest 1074 <br> Hungary
+  </p>
+</div>
+</div>
+
+</div>
+
+<div class="footer">
+<a href="site.html"><button>Home</button></a>
+</div>
+
+</body>
+
+</html>

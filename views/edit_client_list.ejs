@@ -1,0 +1,26 @@
+<%- include("partial_header.ejs"); %>
+
+<h1>List of Clients</h1>
+<% if (flashMessage) { %>
+    <p style='color:red'><%= flashMessage %></p>
+<% } %>
+
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Password</td>
+    </tr>
+    
+<% for (var c of clients) { %>
+    <tr>
+        <td><%= c.client_id %></td>
+        <td><%= c.client_name %></td>
+        <td><%= c.client_email %></td>
+        <td><%= c.client.password %></td>
+    </tr>
+<% } %>
+</table>
+</body>
+</html>
