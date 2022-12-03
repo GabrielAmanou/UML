@@ -1,10 +1,10 @@
-pool = require("../utils/db");
+pool = require("../utils/db.js");
 
 module.exports = {
 
     async GetAllclients(){
         try{
-            let conn = await pool.GetConnection();
+            let conn = await pool.getConnection();
             let sql = 'SELECT * FROM client'
             const [rows, fields] = await conn.execute(sql);
             conn.release();
@@ -20,7 +20,7 @@ module.exports = {
 
     async GetOneClient(client_id){
         try{
-            let conn = await pool.GetConnection();
+            let conn = await pool.getConnection();
             let sql = 'SELECT * FROM client where client_id = ?'
             const [rows, fields] = await conn.execute(sql, [ client_id ]);
             conn.release();

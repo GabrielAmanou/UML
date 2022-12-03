@@ -13,11 +13,8 @@ router.get('/client/list', clientListAction);
 async function clientListAction(request, response){
     var clients = await clientedit.GetAllclients();
 
-    // console.log(cars);
-    var flashMessage = request.session.flashMessage; // express-flash ...
-    request.session.flashMessage = "";
     
-    response.render("edit_client_list", { "clients": clients, "flashMessage": flashMessage });
+    response.render("edit_client_list", { "clients": clients });
 }
 
 

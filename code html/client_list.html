@@ -38,15 +38,37 @@
   </div>
 
 
-  <div class="midcol">
-    <div class="bloc">
-      <p>Please, give us the pet's ID you would like to remove from the database.</p> <br>
-      <form id=petDelete action="DATABSE">
-        Enter pet ID: <input type="text" name="petID"> <br>
-        <input type="button" onclick=""FONCTION DELETE PET"" value="Submit">
-      </form>
-    </div>
-  </div>
+  <h1>List of our clients</h1>
+  <% if (flashMessage) { %>
+      <p style='color:red'><%= flashMessage %></p>
+  <% } %>
+  
+  <p><a href='client_create.html'>Add a new client</a></p>
+  
+  <table class="table table-striped table-bordered table-hover">
+      <tr>
+          <td>Owner's ID</td>
+          <td>Owner's name</td>
+          <td>Owner's email</td>
+          <td>Owner's password</td>
+          <td>Edit</td>
+          <td>Delete</td>
+
+      </tr>
+      
+  <% for (var c of client) { %>
+      <tr>
+          <td><%= c.pet_owner_id %></td>
+          <td><%= c.client_name %></td>
+          <td><%= c.client_email %></td>
+          <td><%= c.client_password %></td>
+          <td><a href='code html/client_edit.html<%= c.client_id %>'>Edit</a></td>
+          <td><a href='code html/client_delete.html/cars/del/<%= c.client_id %>'>Delete</a></td>
+      </tr>
+  <% } %>
+  </table>
+  </body>
+  </html>
 
 
 
@@ -63,6 +85,7 @@
   </p>
 </div>
 </div>
+
 </div>
 
 <div class="footer">

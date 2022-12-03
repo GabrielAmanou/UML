@@ -38,42 +38,15 @@
   </div>
 
 
-  <h1>List of our animals</h1>
-  <% if (flashMessage) { %>
-      <p style='color:red'><%= flashMessage %></p>
-  <% } %>
-  
-  <p><a href='pets_create.html'>Add a new animal</a></p>
-  
-  <table class="table table-striped table-bordered table-hover">
-      <tr>
-          <td>ID</td>
-          <td>Owner's ID</td>
-          <td>Owner's Name</td>
-          <td>Pet's Name</td>
-          <td>Pet's Specie</td>
-          <td>Pet's Age</td>
-          <td>Pet's Diet</td>
-          <td>Edit</td>
-          <td>Delete</td>
-
-      </tr>
-      
-  <% for (var c of cars) { %>
-      <tr>
-          <td><%= c.pet_id %></td>
-          <td><%= c.pet_owner_id %></td>
-          <td><%= c.pet_name %></td>
-          <td><%= c.pet_specie %></td>
-          <td><%= c.pet_age %></td>
-          <td><%= c.pet_diet %></td>
-          <td><a href='code html/pets_edit.html<%= c.pet_id %>'>Edit</a></td>
-          <td><a href='code html/pets_delete.html/cars/del/<%= c.pet_id %>'>Delete</a></td>
-      </tr>
-  <% } %>
-  </table>
-  </body>
-  </html>
+  <div class="midcol">
+    <div class="bloc">
+      <p>Please, give us the owner's ID you would like to remove from the database.</p> <br>
+      <form id=clientDelete action="DATABSE">
+        Enter owner ID: <input type="text" name="clientID"> <br>
+        <input type="button" onclick=""FONCTION DELETE CLIENT"" value="Submit">
+      </form>
+    </div>
+  </div>
 
 
 
@@ -90,7 +63,6 @@
   </p>
 </div>
 </div>
-
 </div>
 
 <div class="footer">
