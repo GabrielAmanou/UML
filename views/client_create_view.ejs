@@ -1,0 +1,29 @@
+<%- include("partial_header.ejs"); %>
+
+<div class="row">
+  <div class="leftcol">
+    <div class="bloc">
+      <a href="about.html">About us</a>
+      <p>Get to know us a bit more!</p>
+    </div>
+    <div class="bloc">
+      <a href="shelters.html">Shelters</a>
+      <p>Wondering where we work? Or where you can send your pets to have some playtime? Click here!</p>
+    </div>
+  </div>
+
+
+  <div class="midcol">
+    <div class="bloc">
+      <p>Here you can add a client to the database!</p>
+      <form id="clientCreate" action="/edit/client/finishadd" method="post">
+        Name: <input type="text" name="client_name"><br><br>
+        Email: <input type="text" name="client_email"><br><br>
+        Password: <input type="text" name="client_password"><br><br>
+        <input type="submit" onclick="FUNCTION CREATE CLIENT" value="Submit">
+      </form>
+      
+    </div>
+  
+  </div>
+  <%- include("partial_footer.ejs"); %>

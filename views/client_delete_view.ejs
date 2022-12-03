@@ -1,0 +1,15 @@
+<%- include("partial_header.ejs"); %>
+
+
+  <div class="midcol">
+    <div class="bloc">
+      <p>Please, give us the owner's ID you would like to remove from the database.</p> <br>
+      <form id=clientDelete action="/edit/client/finishdel" method="post">
+        Enter owner ID: <input type="text" name="client_id"> <br>
+        <input type="submit" onclick=""FONCTION DELETE CLIENT"" value="Submit">
+      </form>
+    </div>
+  </div>
+
+
+  <%- include("partial_footer.ejs"); %>

@@ -58,7 +58,7 @@ module.exports = {
             let conn = await pool.getConnection();
             let sql = 'SELECT MAX(client_id) FROM client'
             const [maxid, fiels] = await conn.execute(sql);
-            let client_id = maxid[0] + 1;
+            let client_id = parseInt(maxid[0]) + 1;
             conn.release();
             console.log("Get Max ID : "+ maxid[0]);
             conn = await pool.getConnection();

@@ -5,7 +5,7 @@ module.exports = {
     async GetAllpets(){
         try{
             let conn = await pool.getConnection();
-            let sql = 'SELECT pet_id, pet_owner_id, pet_name, pet_specie, pet_diet, shelter_location FROM pets INNER JOIN stays_in ON pets.pet_id = stays_in.pet_id INNER JOIN shelter ON stays_in.shelter_id = shelter.shelter_id'
+            let sql = 'SELECT pets.pet_id, pet_owner_id, pet_name, pet_specie, pet_diet, shelter_location FROM pets INNER JOIN stays_in ON pets.pet_id = stays_in.pet_id INNER JOIN shelter ON stays_in.shelter_id = shelter.shelter_id'
             const [rows, fields] = await conn.execute(sql);
             conn.release();
             console.log("Pets FETCHED: "+rows.length);
@@ -58,16 +58,16 @@ module.exports = {
             let conn = await pool.getConnection();
             let sql = 'SELECT MAX(pet_id) FROM pets'
             const [maxid, fields1] = await conn.execute(sql);
-            let pet_id = maxid[0] + 1;
+            let pet_id = parseInt(maxid[0]) + 1;
             conn.release();
-            console.log("Get Max ID : "+ maxid[0]);
+            console.log("Get Max ID : "+ pet_id);
 
             conn = await pool.getConnection();
             sql = 'SELECT client_id FROM client where client_name = ?'
             const [own_id, fields2] = await conn.execute(sql, [ owner_name ]);
-            let pet_owner_id = own_id[0];
+            let pet_owner_id = parseInt(own_id[0]);
             conn.release();
-            console.log("Get Owner ID : "+ own_id[0]);
+            console.log("Get Owner ID : "+ pet_owner_id);
 
             conn = await pool.getConnection();
             sql = 'INSERT into pets VALUES (?, ?, ?, ?, ?, ?)';

@@ -1,0 +1,17 @@
+<%- include("partial_header.ejs"); %>
+
+
+<div class="midcol">
+    <div class="bloc">
+      <p>Please, give us all the details of your desired changes.</p> <br>
+      <form id=petUpdate action="/edit/pet/finishupdate">
+        Pet's Name: <input type="text" name="pet_name"><br><br>
+        Pet's Specie: <input type="text" name="pet_specie"><br><br>
+        Pet's Age: <input type="text" name="pet_age"><br><br>
+        Pet's Diet: <input type="text" name="pet_diet"><br><br>
+        <input type="button" onclick="FUNCTION UPDATE PET" value="Submit"></form>
+    </div>
+  </div>
+
+
+<%- include("partial_footer.ejs"); %>
