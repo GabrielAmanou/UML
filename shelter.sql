@@ -2,6 +2,7 @@ CREATE DATABASE if not exists shelter;
 USE shelter;
 
 DROP TABLE if exists staff;
+DROP TABLE if exists stays_in;
 DROP TABLE if exists pets;
 DROP TABLE if exists shelter;
 DROP TABLE if exists client;
@@ -20,7 +21,7 @@ CREATE TABLE client(
     client_id int auto_increment primary key,
     client_name varchar(100),
     client_email varchar(100),
-    client_password varchar(100),
+    client_password varchar(100)
     );
 
 CREATE TABLE staff ( 
@@ -46,8 +47,8 @@ CREATE TABLE pets(
 CREATE TABLE stays_in(
     pet_id int,
     shelter_id int,
-    CONSTRAINT fk_pet FOREIGN KEY (pet_id) REFERENCES pets (pet_id),
-    CONSTRAINT fk_shelter_stays FOREIGN KEY (shelter_id) REFERENCES shelter (shelter_id)
+    CONSTRAINT fk_pet FOREIGN KEY (pet_id) REFERENCES pets (pet_id) ON DELETE CASCADE,
+    CONSTRAINT fk_shelter_stays FOREIGN KEY (shelter_id) REFERENCES shelter (shelter_id) ON DELETE CASCADE
     );
         
 
@@ -99,7 +100,7 @@ INSERT INTO pets VALUES
 (11, 7, 'Suzie', 'Horse', 8, 'Oats'),
 (12, 7, 'Moly', 'Cat', 2, 'Raw Tuna'),
 (13, 8, 'Kiki', 'lizard', 8, 'bugs'),
-(14, 9, 'Lonie', 'spider' 3, 'bugs'),
+(14, 9, 'Lonie', 'spider', 3, 'bugs'),
 (15, 10, 'Tatou', 'dog', 8, 'croquettes'),
 (16, 11, 'Pinette', 'dog', 6, 'croquettes');
 
