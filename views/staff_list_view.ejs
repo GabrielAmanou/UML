@@ -12,16 +12,18 @@
         <td>Working Hours</td>
         <td>Task</td>
         <td>Shelter</td>
+        <td>Password</td>
     </tr>
     
-<% for (var c of staff) { %>
+<% for (var s of staff) { %>
     <tr>
-        <td><%= c.staff_id %></td>
-        <td><%= c.staff_name %></td>
-        <td><%= c.staff_email %></td>
-        <td><%= c.staff_working_hours %></td>
-        <td><%= c.staff_task %></td>
-        <td><%= c.staff_shelter %></td>
+        <td><%= s.staff_id %></td>
+        <td><%= s.staff_name %></td>
+        <td><%= s.staff_email %></td>
+        <td><%= s.staff_working_hours %></td>
+        <td><%= s.staff_task %></td>
+        <td><%= s.staff_shelter %></td>
+        <td><%= s.staff_password %></td>
     </tr>
 <% } %>
 

@@ -4,11 +4,14 @@ const router = express.Router();
 const clientedit = require ('../utils/clients.managing');
 const petedit = require ('../utils/pets.managing');
 const sheltedit = require('../utils/shelters.managing')
+const staffedit = require('../utils/staff.managing')
 
 // http://localhost:9000/edit
 router.get('/', (req, res) => res.render('edit_view'));
 router.get('/client', (req, res) => res.render('edit_client_view'));
 router.get('/pet', (req, res) => res.render('edit_pet_view'));
+router.get('/staff', (req, res) => res.render('edit_staff_view'));
+router.get('/shelter', (req, res) => res.render('edit_shelter_view'))
 
 router.get('/client/list', clientListAction);
 router.get('/client/add', ClientAdd)
@@ -29,6 +32,23 @@ router.get('/pet/del', Petdelete)
 router.post('/pet/delfinish', Petdelfinish)
 router.get('/pet/delass', Petdelass)
 router.post('/pet/delassfinish', Petdelassfinish)
+
+router.get('/staff/list', staffListAction)
+router.get('/staff/add', StaffAdd)
+router.post('/staff/finishadd', StaffFinishAdd)
+router.get('/staff/del', StaffDel)
+router.post('/staff/finishdel', StaffFinishDel)
+router.get('/staff/update', StaffUpdate)
+router.post('/staff/finishupdate', StaffFinishUpdate)
+
+
+router.get('/shelter/list', shelterListeAction)
+router.get('/shelter/add', ShelterAdd)
+router.post('/shelter/finishadd', ShelterFinishAdd)
+router.get('/shelter/del', ShelterDel)
+router.post('/shelter/finishdel', ShelterFinishDel)
+router.get('/shelter/update', ShelterUpdate)
+router.post('/shelter/finishupdate', ShelterFinishUpdate)
 
 
 
@@ -138,8 +158,84 @@ async function Petdelassfinish(request, reponse){
     reponse.redirect('/edit/pet/list')
 }
 
+async function staffListAction(request, response){
+    var staff = await staffedit.GetAllstaff();    
+    response.render("staff_list_view", { "staff": staff });
 
+}
 
+async function StaffAdd(request, response){
+
+    //shelter = await sheltedit.GetAllShelter();
+    response.render('AAAA');
+}
+
+async function StaffFinishAdd(request, response){
+
+    await staffedit.CreateStaff(request.body.staff_name, request.body.staff_email, request.body.staff_working_hours, request.body.staff_task, request.body.staff_shelter, request.body.staff_password)
+    response.redirect('/edit/staff/list');
+}
+
+async function StaffDel(request, response) {
+    response.render('staff_delete_view');
+    
+}
+
+async function StaffFinishDel(request, response){
+    await staffedit.DelStaff(request.body.staff_id)
+    response.redirect('/edit/staff/list')
+}
+
+async function StaffUpdate(request, response){
+
+    shelter = await sheltedit.GetAllShelter();
+
+    response.render('staff_update_view', {'shelter': shelter})
+}
+
+async function StaffFinishUpdate (request, response) {
+    await staffedit.UpdateStaff(request.body.staff_email, request.body.staff_working_hours, request.body.staff_task, request.body.staff_shelter, request.body.staff_password);
+    response.redirect('/edit/staff/list')
+}
+
+async function shelterListeAction(request,response){
+    shelter = await sheltedit.GetAllShelter();
+    response.render('shelter_list_view', { "shelter": shelter});
+}
+
+async function ShelterAdd(request,response){
+    
+    response.render('shelter_create_view', {})
+}
+
+async function ShelterFinishAdd(request,response) {
+    
+    await sheltedit.CreateShelter(request.body.shelter_grade,request.body.shelter_equipment, request.body.shelter_nbr_max_of_pets, request.body.shelter_size, request.body.shelter_location)
+    response.redirect('/edit/shelter/list');
+    
+}
+
+async function ShelterDel(request,response){
+
+    response.render('shelter_delete_view')
+}
+
+async function ShelterFinishDel(request, response){
+    await sheltedit.DelShelter(request.body.shelter_id)
+    response.redirect('/edit/shelter/list')
+}
+
+async function ShelterUpdate(request, response) {
+    
+    response.render('shelter_update_view')
+    
+}
+
+async function ShelterFinishUpdate(request, response) {
+    
+    await sheltedit.UpdateShelter(request.body.shelter_id, request.body.shelter_grade,request.body.shelter_equipment, request.body.shelter_nbr_max_of_pets, request.body.shelter_size)
+    response.redirect('/edit/shelter/list')
+}
 
 
 module.exports = router;

@@ -1,0 +1,22 @@
+<%- include("partial_header.ejs"); %>
+
+
+
+  <div class="midcol">
+    <div class="bloc">
+      <p>Here you can add an employee to the database!</p>
+      <form id="staffCreate" action="/edit/staff/finishadd" method="post">
+        Name: <input type="text" name="staff_name"><br><br>
+        Email: <input type="text" name="staff_email"><br><br>
+        Password: <input type="text" name="staff_password"> <br><br>
+        Working hours : <input type="text" name="staff_working_hours" ><br><br>
+        Task: <input type="text" name="staff_task" id=""><br><br>
+        Shelter:  <input type="" name="staff_shelter" id="">
+        <br><br>
+        <input type="submit" onclick=""FUNCTION CREATE STAFF"" value="Submit">
+      </form>
+      
+    </div>
+  
+  </div>
+  <%- include("partial_footer.ejs"); %>
