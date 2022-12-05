@@ -1,0 +1,20 @@
+<%- include("partial_header.ejs"); %>
+
+
+
+  <div class="midcol">
+    <div class="bloc">
+      <p>Here you can add a shelter to the database!</p>
+      <form id="shelterCreate" action="/edit/shelter/finishadd" method="post">
+        Shelter Grade: <input type="text" name="shelter_grade"><br><br>
+        Shelter Equipment: <input type="text" name="shelter_equipment"><br><br>
+        Maximum number of pets possible : <input type="text" name="shelter_nbr_max_of_pets"><br><br>
+        Shelter Size: <input type="text" name="shelter_size"> <br><br>
+        Shelter Location: <input type="text" name="shelter_location"> <br><br>
+        <input type="submit" onclick=""FUNCTION CREATE SHELTER"" value="Submit">
+      </form>
+      
+    </div>
+  
+  </div>
+  <%- include("partial_footer.ejs"); %>

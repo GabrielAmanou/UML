@@ -1,0 +1,30 @@
+<%- include("partial_header.ejs"); %>
+
+
+    
+<h1>List of the people working for the shelters</h1>
+
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Working Hours</td>
+        <td>Task</td>
+        <td>Shelter</td>
+    </tr>
+    
+<% for (var c of staff) { %>
+    <tr>
+        <td><%= c.staff_id %></td>
+        <td><%= c.staff_name %></td>
+        <td><%= c.staff_email %></td>
+        <td><%= c.staff_working_hours %></td>
+        <td><%= c.staff_task %></td>
+        <td><%= c.staff_shelter %></td>
+    </tr>
+<% } %>
+
+
+</table>
+<%- include("partial_footer.ejs"); %>

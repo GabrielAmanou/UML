@@ -1,0 +1,21 @@
+<%- include("partial_header.ejs"); %>
+
+
+  <div class="midcol">
+    <div class="bloc">
+      <p>What's the pet you want to remove from it's assignement ?</p> <br>
+      <form id=petDeleteass action="/edit/pet/delassfinish" method="post">
+        Pet: <select name='pet_id'>
+            <% for (var p of pets) { %>
+                  <option value='<%= p.pet_id %>'
+                    <%- p.pet_id ? "selected='selected'" : "" %> 
+                    > <%= p.pet_name %> </option>
+            <% } %>
+          </select><br>
+        <input type="submit" onclick='' value="Submit">
+      </form>
+    </div>
+  </div>
+
+
+  <%- include("partial_footer.ejs"); %>

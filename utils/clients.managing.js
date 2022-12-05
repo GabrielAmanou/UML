@@ -61,6 +61,7 @@ module.exports = {
             let client_id = parseInt(maxid[0]) + 1;
             conn.release();
             console.log("Get Max ID : "+ maxid[0]);
+            
             conn = await pool.getConnection();
             sql = 'INSERT into client VALUES (?, ?, ?, ?)';
             const [okPacket, fields] = await conn.execute(sql, [client_id, client_name, client_email, client_password]);

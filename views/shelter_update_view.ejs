@@ -1,0 +1,19 @@
+<%- include("partial_header.ejs"); %>
+
+
+<div class="midcol">
+    <div class="bloc">
+      <p>Please, give us all the details of your desired changes.</p> <br>
+      <form id=shelterUpdate action="/edit/shelter/finishupdate" method="post">
+        Shelter's ID: <input type="text" name="shelter_id"><br><br>
+        Shelter Grade: <input type="text" name="shelter_grade"><br><br>
+        Shelter Equipment: <input type="text" name="shelter_equipment"><br><br>
+        Maximum number of pets possible : <input type="text" name="shelter_nbr_max_of_pets"><br><br>
+        Shelter Size: <input type="text" name="shelter_size"> <br><br>
+        Shelter Location: <input type="text" name="shelter_location"> <br><br>
+        <input type="submit" onclick=""FUNCTION UPDATE SHELTER"" value="Submit"></form>
+    </div>
+  </div>
+
+
+<%- include("partial_footer.ejs"); %>

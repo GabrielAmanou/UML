@@ -1,0 +1,27 @@
+<%- include("partial_header.ejs"); %>
+
+  <div class="midcol">
+    <div class="bloc">
+      <p>Please, give us the pet's ID you would like to assign.</p> <br>
+      <form id=petDelete action="/edit/pet/Assignfinish" method="post">
+        Pet name: <select name='pet_id'>
+            <% for (var p of pet) { %>
+                  <option value='<%= p.pet_id %>'
+                    <%- p.pet_id ? "selected='selected'" : "" %> 
+                    > <%= p.pet_name %> </option>
+            <% } %>
+          </select><br>
+        Shelter location : <select name='shelter_id'>
+            <% for (var s of shelter) { %>
+                  <option value='<%= s.shelter_id %>'
+                    <%- s.shelter_id ? "selected='selected'" : "" %> 
+                    > <%= s.shelter_location %> </option>
+            <% } %>
+          </select><br>
+        <input type="submit" onclick=""FONCTION ASSIGN" value="Submit">
+      </form>
+    </div>
+  </div>
+
+
+  <%- include("partial_footer.ejs"); %>
