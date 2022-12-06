@@ -36,19 +36,12 @@ module.exports = {
 
     async CreateShelter(shelter_grade, shelter_equipment, shelter_nbr_max_of_pets, shelter_size, shelter_location){
         try{
-            let conn = await pool.getConnection();
-            let sql = 'SELECT MAX(shelter_id) FROM shelter'
-            const [maxid, fiels] = await conn.execute(sql);
-            let shelter_id = parseInt(maxid[0]) + 1;
-            conn.release();
-            console.log("Get Max ID : "+ maxid[0]);
-            
             conn = await pool.getConnection();
-            sql = 'INSERT into shelter VALUES (?, ?, ?, ?, ?, ?)';
-            const [okPacket, fields] = await conn.execute(sql, [shelter_id, shelter_grade, shelter_equipment, shelter_nbr_max_of_pets, shelter_size, shelter_location ]);
+            sql = 'INSERT into shelter VALUES (NULL, ?, ?, ?, ?, ?)';
+            const [okPacket, fields] = await conn.execute(sql, [shelter_grade, shelter_equipment, shelter_nbr_max_of_pets, shelter_size, shelter_location ]);
             conn.release();
             console.log("INSERT "+JSON.stringify(okPacket));
-            return okPacket.insertId;
+            return 0;
         }
         catch (err) {
             console.log(err);

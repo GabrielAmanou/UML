@@ -36,19 +36,6 @@ module.exports = {
     
     async CreateStaff(staff_name, staff_email, staff_working_hours, staff_task, staff_shelter, staff_password){
         try{
-            let conn = await pool.getConnection();
-            let sql = 'SELECT MAX(staff_id) FROM staff'
-            const [maxid, fiels] = await conn.execute(sql);
-            let staff_id = parseInt(maxid[0]) + 1;
-            conn.release();
-            /*console.log(staff_name);
-            console.log(staff_email);
-            console.log(staff_working_hours);
-            console.log(staff_task);
-            console.log(staff_shelter);
-            console.log(staff_password);*/
-            console.log("Get Max ID : "+ maxid[0]);
-            
             conn = await pool.getConnection();
             sql = 'INSERT into staff VALUES (NULL, ?, ?, ?, ?, ?, ?)';
             const [okPacket, fields] = await conn.execute(sql, [staff_name, staff_email, staff_working_hours, staff_task, staff_shelter, staff_password ]);

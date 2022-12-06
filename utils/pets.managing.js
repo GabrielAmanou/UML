@@ -56,19 +56,12 @@ module.exports = {
 
     async CreatePet(pet_owner_id, pet_name, pet_specie, pet_age, pet_diet){
         try{
-            let conn = await pool.getConnection();
-            let sql = 'SELECT MAX(pet_id) FROM pets'
-            const [maxid, fields1] = await conn.execute(sql);
-            let pet_id = parseInt(maxid[0] + 1);
-            conn.release();
-            console.log("Get Max ID : "+ pet_id);
-
             conn = await pool.getConnection();
-            sql = 'INSERT into pets VALUES (?, ?, ?, ?, ?, ?)';
-            const [okPacket, fields3] = await conn.execute(sql, [pet_id, pet_owner_id, pet_name, pet_specie, pet_age, pet_diet]);
+            sql = 'INSERT into pets VALUES (NULL, ?, ?, ?, ?, ?)';
+            const [okPacket, fields3] = await conn.execute(sql, [pet_owner_id, pet_name, pet_specie, pet_age, pet_diet]);
             conn.release();
             console.log("INSERT "+JSON.stringify(okPacket));
-            return okPacket.insertId;
+            return 0;
         }
         catch (err) {
             console.log(err);

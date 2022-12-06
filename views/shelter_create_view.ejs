@@ -6,11 +6,28 @@
     <div class="bloc">
       <p>Here you can add a shelter to the database!</p>
       <form id="shelterCreate" action="/edit/shelter/finishadd" method="post">
-        Shelter Grade: <input type="text" name="shelter_grade"><br><br>
-        Shelter Equipment: <input type="text" name="shelter_equipment"><br><br>
+        Shelter Grade: <select type="text" name="shelter_grade">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select><br><br>
+        Shelter Equipment: <select type="text" name="shelter_equipment">
+          <option>minimum</option>
+          <option>average</option>
+          <option>good</option>
+          <option>well equipped</option>
+        </select><br><br>
         Maximum number of pets possible : <input type="text" name="shelter_nbr_max_of_pets"><br><br>
-        Shelter Size: <input type="text" name="shelter_size"> <br><br>
-        Shelter shelter_location: <input type="text" name="shelter_location"> <br><br>
+        Shelter Size: <select type="text" name="shelter_size"> 
+          <option>Very small</option>
+          <option>Small</option>
+          <option>Medium</option>
+          <option>Large</option>
+          <option>Very large</option>
+        </select>><br><br>
+        Shelter shelter location: <input type="text" name="shelter_location"> <br><br>
         <input type="submit" onclick=""FUNCTION CREATE SHELTER"" value="Submit">
       </form>
       
@@ -18,3 +35,11 @@
   
   </div>
   <%- include("partial_footer.ejs"); %>
+
+
+  <select name="staff_working_hours" type="text">
+    <option value="9h-18h">9h-18h</option>
+    <option>7h-16h</option>
+    <option>15h-22h</option>
+    </select>
+  <br><br>

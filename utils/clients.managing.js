@@ -55,19 +55,12 @@ module.exports = {
 
     async CreateClient(client_name, client_email, client_password){
         try{
-            let conn = await pool.getConnection();
-            let sql = 'SELECT MAX(client_id) FROM client'
-            const [maxid, fiels] = await conn.execute(sql);
-            let client_id = parseInt(maxid[0]) + 1;
-            conn.release();
-            console.log("Get Max ID : "+ maxid[0]);
-            
             conn = await pool.getConnection();
-            sql = 'INSERT into client VALUES (?, ?, ?, ?)';
-            const [okPacket, fields] = await conn.execute(sql, [client_id, client_name, client_email, client_password]);
+            sql = 'INSERT into client VALUES (NULL, ?, ?, ?)';
+            const [okPacket, fields] = await conn.execute(sql, [client_name, client_email, client_password]);
             conn.release();
             console.log("INSERT "+JSON.stringify(okPacket));
-            return okPacket.insertId;
+            return 0;
         }
         catch (err) {
             console.log(err);

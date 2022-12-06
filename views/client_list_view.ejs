@@ -1,26 +1,47 @@
 <%- include("partial_header.ejs"); %>
 
-
+<div class="midcol">
+    <div class="bloc">
     
 <h1>List of Clients</h1>
 
 <table class="table table-striped table-bordered table-hover">
     <tr>
-        <td>ID</td>
-        <td>Name</td>
-        <td>Email</td>
-        <td>Password</td>
+        <td style="font-weight: bolder">ID</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="font-weight: bolder">Name</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="font-weight: bolder">Email</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="font-weight: bolder">Password</td>
     </tr>
+    <tr></tr>
     
 <% for (var c of clients) { %>
     <tr>
         <td><%= c.client_id %></td>
+        <td></td>
+        <td></td>
+        <td></td>
         <td><%= c.client_name %></td>
+        <td></td>
+        <td></td>
+        <td></td>
         <td><%= c.client_email %></td>
+        <td></td>
+        <td></td>
+        <td></td>
         <td><%= c.client_password %></td>
     </tr>
 <% } %>
-
-
 </table>
+
+</div>
+</div>
 <%- include("partial_footer.ejs"); %>

@@ -86,6 +86,20 @@ input[type=text]:focus, input[type=password]:focus {
   outline: none;
 }
 
+.vertical_menu {
+  width: 200px;
+  height: 300px;
+  overflow-y: auto;
+}
+
+.vertical_menu a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
@@ -155,6 +169,9 @@ btn:hover {
   text-align: center;
   background: #ddd;
   margin-top: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
 

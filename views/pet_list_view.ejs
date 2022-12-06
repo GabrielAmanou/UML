@@ -1,32 +1,70 @@
 <%- include("partial_header.ejs"); %>
 
 
+<div class="midcol">
+    <div class="bloc">
 
   <h1>List of our animals</h1>
   
   <table class="table table-striped table-bordered table-hover">
       <tr>
-          <td>ID</td>
-          <td>Owner's ID</td>
-          <td>Pet's Name</td>
-          <td>Pet's Specie</td>
-          <td>Pet's Diet</td>
-          <td>Pet's shelter location</td>
+          <td style="font-weight: bolder">ID</td>
+          <td></td>
+        <td></td>
+        <td></td>
+          <td style="font-weight: bolder">Owner's ID</td>
+          <td></td>
+        <td></td>
+        <td></td>
+          <td style="font-weight: bolder">Pet's Name</td>
+          <td></td>
+        <td></td>
+        <td></td>
+          <td style="font-weight: bolder">Pet's Specie</td>
+          <td></td>
+        <td></td>
+        <td></td>
+          <td style="font-weight: bolder">Pet's Diet</td>
+          <td></td>
+        <td></td>
+        <td></td>
+          <td style="font-weight: bolder">Pet's shelter location</td>
 
       </tr>
+      <tr></tr>
       
   <% for (var c of pets) { %>
       <tr>
           <td><%= c.pet_id %></td>
+          <td></td>
+        <td></td>
+        <td></td>
           <td><%= c.pet_owner_id %></td>
+          <td></td>
+        <td></td>
+        <td></td>
           <td><%= c.pet_name %></td>
+          <td></td>
+        <td></td>
+        <td></td>
           <td><%= c.pet_specie %></td>
+          <td></td>
+        <td></td>
+        <td></td>
           <td><%= c.pet_age %></td>
+          <td></td>
+        <td></td>
+        <td></td>
           <td><%= c.pet_diet %></td>
+          <td></td>
+        <td></td>
+        <td></td>
           <td><%= c.shelter_location %></td>
       </tr>
   <% } %>
   </table>
 
+</div>
+</div>
 
   <%- include("partial_footer.ejs"); %>
