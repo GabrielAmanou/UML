@@ -9,9 +9,25 @@
         Name: <input type="text" name="staff_name"><br><br>
         Email: <input type="text" name="staff_email"><br><br>
         Password: <input type="text" name="staff_password"> <br><br>
-        Working hours : <input type="text" name="staff_working_hours" ><br><br>
-        Task: <input type="text" name="staff_task" id=""><br><br>
-        Shelter:  <input type="" name="staff_shelter" id="">
+        Working hours : <select name="staff_working_hours" type="text">
+            <option">9h-18h</option>
+            <option>7h-16h</option>
+            <option>15h-22h</option>
+            </select>
+          <br><br>
+        Task: <select type="text" name="staff_task"> 
+            <option>Administration</option>
+            <option value="Pets care">Pets care</option>
+          </select>
+            <br><br>
+        Shelter: <select name='staff_shelter'>
+            <% for (var s of shelter) { %>
+                  <option value='<%= s.shelter_id %>'
+                    <%- s.shelter_id ? "selected='selected'" : "" %> 
+                    > <%= s.shelter_location %> </option>
+            <% } %>
+            </select>
+          <br><br>
         <br><br>
         <input type="submit" onclick=""FUNCTION CREATE STAFF"" value="Submit">
       </form>

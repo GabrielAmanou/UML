@@ -13,6 +13,8 @@ router.get('/pet', (req, res) => res.render('edit_pet_view'));
 router.get('/staff', (req, res) => res.render('edit_staff_view'));
 router.get('/shelter', (req, res) => res.render('edit_shelter_view'))
 
+
+
 router.get('/client/list', clientListAction);
 router.get('/client/add', ClientAdd)
 router.post('/client/finishadd', ClientFinishAdd)
@@ -166,8 +168,8 @@ async function staffListAction(request, response){
 
 async function StaffAdd(request, response){
 
-    //shelter = await sheltedit.GetAllShelter();
-    response.render('AAAA');
+    shelter = await sheltedit.GetAllShelter();
+    response.render('staff_create_view', {'shelter': shelter});
 }
 
 async function StaffFinishAdd(request, response){
@@ -194,7 +196,7 @@ async function StaffUpdate(request, response){
 }
 
 async function StaffFinishUpdate (request, response) {
-    await staffedit.UpdateStaff(request.body.staff_email, request.body.staff_working_hours, request.body.staff_task, request.body.staff_shelter, request.body.staff_password);
+    await staffedit.UpdateStaff(request.body.staff_id, request.body.staff_email, request.body.staff_working_hours, request.body.staff_task, request.body.staff_shelter, request.body.staff_password);
     response.redirect('/edit/staff/list')
 }
 

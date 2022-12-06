@@ -41,14 +41,20 @@ module.exports = {
             const [maxid, fiels] = await conn.execute(sql);
             let staff_id = parseInt(maxid[0]) + 1;
             conn.release();
+            /*console.log(staff_name);
+            console.log(staff_email);
+            console.log(staff_working_hours);
+            console.log(staff_task);
+            console.log(staff_shelter);
+            console.log(staff_password);*/
             console.log("Get Max ID : "+ maxid[0]);
             
             conn = await pool.getConnection();
-            sql = 'INSERT into staff VALUES (?, ?, ?, ?, ?, 2, ?)';
-            const [okPacket, fields] = await conn.execute(sql, [staff_id, staff_name, staff_email, staff_working_hours, staff_task, staff_password ]);
+            sql = 'INSERT into staff VALUES (NULL, ?, ?, ?, ?, ?, ?)';
+            const [okPacket, fields] = await conn.execute(sql, [staff_name, staff_email, staff_working_hours, staff_task, staff_shelter, staff_password ]);
             conn.release();
             console.log("INSERT "+JSON.stringify(okPacket));
-            return okPacket.insertId;
+            return 0;
         }
         catch (err) {
             console.log(err);
@@ -60,7 +66,7 @@ module.exports = {
     async UpdateStaff(staff_id, staff_email, staff_working_hours, staff_task, staff_shelter, staff_password){
         try{
             let conn = await pool.getConnection();
-            sql = 'UPDATE staff SET staff_email = ?, staff_working_hours = ?, staff_task = ?, staff_shelter = ?, staff_password = ? where staff_id = ?';
+            let sql = 'UPDATE staff SET staff_email = ?, staff_working_hours = ?, staff_task = ?, staff_shelter = ?, staff_password = ? where staff_id = ?';
             const [okPacket, fields] = await conn.execute(sql, [ staff_email, staff_working_hours, staff_task, staff_shelter, staff_password, staff_id ]);
             conn.release();
             console.log("UPDATE "+JSON.stringify(okPacket));
