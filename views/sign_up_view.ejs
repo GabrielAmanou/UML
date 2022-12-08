@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
+<%- include("partial_header.ejs"); %>
+
 
 
 <div class="midcol">
     <div class="bloc">
-        <form action="action_page.php" style="border:1px solid #ccc">
+        <form action="post" style="border:1px solid #ccc">
         <div class="container">
           <h1>Sign Up</h1>
           <p>Please fill in this form to create an account.</p>
@@ -34,26 +33,5 @@
     </div>
 </div>
 
-  
-  <div class="rightcol">
-    <h2>Reviews from owners!</h2>
-    <div class="bloc">
-      <h4>Mathilda Simons</h4>
-      <p>My cat had an amazing time with the others! My Tilly came back so happy and energised!</p>
-    </div>
-              
-    <div class="bloc">
-      <h4>Follow us on our socials!</h4>
-      <p>If social media isn't your thing, write to us! <br> 40 Dohany utca <br> Budapest 1074 <br> Hungary
-      </p>
-    </div>
-  </div>
-</div>
 
-<div class="footer">
-  <a href="site.html"><button>Home</button></a>
-</div>
-
-</body>
-
-</html>
+<%- include("partial_footer.ejs"); %>

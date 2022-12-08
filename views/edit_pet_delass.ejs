@@ -4,7 +4,7 @@
   <div class="midcol">
     <div class="bloc">
       <p>What's the pet you want to remove from it's assignement ?</p> <br>
-      <form id=petDeleteass action="/edit/pet/delassfinish" method="post">
+      <form id=petDeleteass action="/Admin/pet/delassfinish" method="post">
         Pet: <select name='pet_id'>
             <% for (var p of pets) { %>
                   <option value='<%= p.pet_id %>'

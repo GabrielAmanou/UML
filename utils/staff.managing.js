@@ -22,11 +22,11 @@ module.exports = {
     async GetOnestaff(staff_email){
         try {
             let conn = await pool.getConnection();
-            let sql = 'SELECT * FROM staff WHERE staff_email = ? OR user_name = ?';
+            let sql = 'SELECT * FROM staff WHERE staff_email = ?';
             const [rows, fields] = await conn.execute(sql, [ staff_email ]);
             conn.release();
             console.log('client fetched: '+ rows.length);
-            return rows;
+            return rows[0];
         }
         catch (err){
             console.log(err);

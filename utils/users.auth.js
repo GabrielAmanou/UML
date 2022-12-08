@@ -1,16 +1,29 @@
 const passport = require("passport");
 const usersRepo = require("../utils/users.repository.js");
+const staffrep = require('../utils/staff.managing');
+const clientrep = require("../utils/clients.managing")
 
 module.exports = {
   initialization(app) {
     app.use(passport.initialize());
     app.use(passport.session());
     passport.serializeUser(function (user, done) {
-      done(null, user.user_name);
+      if (user.role == 'ADMIN'){
+        done(null, user.staff_email);
+      }else{
+        done(null, user.client_email);
+      }
+      
     });
-    passport.deserializeUser(async function (username, done) {
-      let user = await usersRepo.getOneUser(username);
-      done(null, user);
+    passport.deserializeUser(async function (useremail, done) {
+      if (useremail.includes('@pet.com')){
+        let user = await staffrep.GetOnestaff(useremail);
+        done(null, user)
+      }
+      else{
+        let user = await clientrep.GetOneClient(useremail);
+        done(null, user);
+      }
     });
   },
 
@@ -18,7 +31,7 @@ module.exports = {
     return function (request, response, next) {
       if (request.isAuthenticated()) {
         
-        if (request.user.staff_task === 'Administration' || 'Pets care ') { 
+        if (request.user.staff_role === 'ADMIN') { 
           return next();
         } else {
           return response.end("401 Unautorized (bad user level)"); // TODO: Hierarchy
@@ -26,8 +39,21 @@ module.exports = {
         } else { // No special role needed for page -> next middleware
           return response.redirect("/auth");
         }
-      
-    
     }
-  }
+  },
+
+
+  checkAuthenticationClient(){
+    return function (request, response, next){
+      if (request.isAuthenticated()){
+        if (request.user.client_role = 'CLIENT'){
+          return next();
+        }else{
+          return response.end("YOU ARE AN ADMIN NO USE OF USER PAGE");
+        }
+      }else{
+        return response.redirect('/auth');
+      }
+    }
+  },
 };

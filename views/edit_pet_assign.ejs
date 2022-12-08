@@ -3,7 +3,7 @@
   <div class="midcol">
     <div class="bloc">
       <p>Please, give us the pet's ID you would like to assign.</p> <br>
-      <form id=petDelete action="/edit/pet/Assignfinish" method="post">
+      <form id=petDelete action="/Admin/pet/Assignfinish" method="post">
         Pet name: <select name='pet_id'>
             <% for (var p of pet) { %>
                   <option value='<%= p.pet_id %>'

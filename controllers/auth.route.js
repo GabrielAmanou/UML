@@ -21,7 +21,7 @@ async function loginPostAction(request, response) {
     console.log ('checked');
     areValid = await userRepo.areValidCredentialsStaff(request.body.uname, request.body.psw);
     if (areValid){
-      user = staffManaging.GetOnestaff(request.body.uname);
+      user = await staffManaging.GetOnestaff(request.body.uname);
       console.log(user);
       request.login(user, function (err){
         if (err) { console.log("ERROR IN request.login"); console.log(err); return next(err); }
