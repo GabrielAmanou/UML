@@ -23,7 +23,7 @@ module.exports = {
   async areValidCredentialsClient(username, password) {
     try {
       let conn = await pool.getConnection();
-      let sql = "SELECT * FROM clients WHERE client_email = ? and client_password = ? "; 
+      let sql = "SELECT * FROM client WHERE client_email = ? and client_password = ? "; 
       // TODO: better salt+pw hash - COLLATE usually not needed
       const [rows, fields] = await conn.execute(sql, [username, password]);
       conn.release();
@@ -42,14 +42,18 @@ module.exports = {
   async areValidCredentialsStaff(username, password) {
     try {
       let conn = await pool.getConnection();
-      let sql = "SELECT * FROM staff WHERE staff_name = ? and staff_password = ? "; 
+      let sql = "SELECT * FROM staff WHERE staff_email = ? and staff_password = ? "; 
       // TODO: better salt+pw hash - COLLATE usually not needed
       const [rows, fields] = await conn.execute(sql, [username, password]);
       conn.release();
+      console.log('MAIL '+ username);
+      console.log('PSW '+ password);
 
-      if (rows.length == 1 && rows[0].client_email === username) {
+      if (rows.length == 1) {
+        console.log('TRUE');
         return true;
       } else {
+        console.log('FALSE');
         return false;
       }
     } catch (err) {

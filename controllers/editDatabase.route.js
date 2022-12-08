@@ -5,15 +5,18 @@ const clientedit = require ('../utils/clients.managing');
 const petedit = require ('../utils/pets.managing');
 const sheltedit = require('../utils/shelters.managing')
 const staffedit = require('../utils/staff.managing')
+const auth = require("../utils/users.auth");
 
 // http://localhost:9000/edit
-router.get('/', (req, res) => res.render('edit_view'));
+router.get('/', auth.checkAuthenticationStaff(), AuthAction);
 router.get('/client', (req, res) => res.render('edit_client_view'));
 router.get('/pet', (req, res) => res.render('edit_pet_view'));
 router.get('/staff', (req, res) => res.render('edit_staff_view'));
 router.get('/shelter', (req, res) => res.render('edit_shelter_view'))
 
-
+async function AuthAction(request, response){
+    response.render('edit_view');
+}
 
 router.get('/client/list', clientListAction);
 router.get('/client/add', ClientAdd)
@@ -42,7 +45,6 @@ router.get('/staff/del', StaffDel)
 router.post('/staff/finishdel', StaffFinishDel)
 router.get('/staff/update', StaffUpdate)
 router.post('/staff/finishupdate', StaffFinishUpdate)
-
 
 router.get('/shelter/list', shelterListeAction)
 router.get('/shelter/add', ShelterAdd)

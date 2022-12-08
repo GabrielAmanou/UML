@@ -18,11 +18,11 @@ module.exports = {
         }
     },
 
-    async GetOneClient(client_id){
+    async GetOneClient(client_email){
         try{
             let conn = await pool.getConnection();
-            let sql = 'SELECT * FROM client where client_id = ?'
-            const [rows, fields] = await conn.execute(sql, [ client_id ]);
+            let sql = 'SELECT * FROM client where client_email = ?'
+            const [rows, fields] = await conn.execute(sql, [ client_email ]);
             conn.release();
             console.log("Client FETCHED: "+rows.length);
             if (rows.length == 1) {

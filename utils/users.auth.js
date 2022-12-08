@@ -14,22 +14,20 @@ module.exports = {
     });
   },
 
-  checkAuthentication(role) {
+  checkAuthenticationStaff() {
     return function (request, response, next) {
       if (request.isAuthenticated()) {
-        if (role) {
-          if (role === request.user.user_role) { 
-            return next();
-          } else {
-            return response.end("401 Unautorized (bad user level)"); // TODO: Hierarchy
-          }
-        } else { // No special role needed for page -> next middleware
+        
+        if (request.user.staff_task === 'Administration' || 'Pets care ') { 
           return next();
+        } else {
+          return response.end("401 Unautorized (bad user level)"); // TODO: Hierarchy
         }
-      } else {
-        return response.end("401 Unautorized (not authenticated)");
-        // response.redirect("/auth"); // not authenticated at all
-      }
+        } else { // No special role needed for page -> next middleware
+          return response.redirect("/auth");
+        }
+      
+    
     }
   }
 };
