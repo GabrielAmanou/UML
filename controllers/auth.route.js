@@ -11,10 +11,15 @@ const clientManaging = require('../utils/clients.managing')
 // http://localhost:9000/auth
 router.get('/', (req, res) => res.render('auth_view'));
 router.get('/sign_up', (req, res) => res.render('sign_up_view'));
+router.post('/signupfinish', SignUpFinish)
 router.post('/login', loginPostAction)
 
 
 
+async function SignUpFinish(request, response){
+  await clientManaging.CreateClient(request.body.client_name, request.body.client_email, request.body.client_password);
+  response.redirect('/auth');
+}
 
 
 

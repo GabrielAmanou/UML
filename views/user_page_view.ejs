@@ -1,0 +1,60 @@
+<%- include("partial_header.ejs"); %>
+
+<div class="midcol">
+    <div class="bloc">
+
+        <h1>List of your animals</h1>
+  
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <td style="font-weight: bolder">Name</td>
+                <td></td>
+              <td></td>
+              <td></td>
+                <td style="font-weight: bolder">Specie</td>
+                <td></td>
+              <td></td>
+              <td></td>
+                <td style="font-weight: bolder">Age</td>
+                <td></td>
+              <td></td>
+              <td></td>
+                <td style="font-weight: bolder">Diet</td>
+                <td></td>
+              <td></td>
+              <td></td>
+                <td style="font-weight: bolder">Location</td>
+                <td></td>
+            </tr>
+            <tr></tr>
+            
+        <% for (var c of pets) { %>
+            <tr>
+                <td><%= c.pet_name %></td>
+                <td></td>
+              <td></td>
+              <td></td>
+                <td><%= c.pet_specie %></td>
+                <td></td>
+              <td></td>
+              <td></td>
+                <td><%= c.pet_age %></td>
+                <td></td>
+              <td></td>
+              <td></td>
+                <td><%= c.pet_diet %></td>
+                <td></td>
+              <td></td>
+              <td></td>
+                <td><%= c.shelter_location %></td>
+                <td></td>
+            </tr>
+        <% } %>
+        </table>
+
+
+
+    </div>
+</div>
+
+<%- include("partial_footer.ejs"); %>

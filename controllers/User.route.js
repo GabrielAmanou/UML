@@ -2,16 +2,18 @@
 const express = require('express');
 const router = express.Router();
 const clientManaging = require('../utils/clients.managing')
+const userRepo = require("../utils/users.repository");
+const auth = require("../utils/users.auth");
+const userf = require("../utils/user_functions")
 
-router.get('/', (req, res) => res.render('site_view'));
-router.post('/signup', SignUpFinish)
+router.get('/', auth.checkAuthenticationClient(), Userpage);
 
-async function SignUpFinish(request, response){
-    console.log(request.body.client_name);
-    console.log(request.body.client_email);
-    console.log(request.body.client_password);
-    await clientManaging.CreateClient(request.body.client_name, request.body.client_email, request.body.client_password);
-    response.redirect('/auth');
-  }
+async function Userpage(request, response) {
+    console.log(request.user)
+    pets = await userf.Get_Pets_of_Client(request.user.client_id);
+
+    response.render('user_page_view', { 'pets': pets});
+}
+
 
 module.exports = router;

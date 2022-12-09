@@ -46,7 +46,7 @@ module.exports = {
   checkAuthenticationClient(){
     return function (request, response, next){
       if (request.isAuthenticated()){
-        if (request.user.role = 'CLIENT'){
+        if (request.user.role == 'CLIENT'){
           return next();
         }else{
           return response.end("YOU ARE AN ADMIN NO USE OF USER PAGE");
