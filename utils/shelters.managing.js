@@ -8,7 +8,7 @@ module.exports = {
             let sql = 'SELECT * FROM shelter'
             const [rows, fields] = await conn.execute(sql);
             conn.release();
-            console.log("Client FETCHED: "+rows.length);
+            console.log("Shelter(s) FETCHED: "+rows.length);
             return rows;
         }
         catch (err) {

@@ -14,14 +14,14 @@ body {
 	}
 
 .adminbut button{
-  position: absolute;
-  width: 20%;
+  position: fixed;
+  width: 10%;
   margin-right: 2px;
-  top: 0;
+  top: 5%;
   right: 0;
-  background-color: rgba(240, 255, 255, 0.703);
+  background-color: rgba(94, 255, 255, 0.404);
   font-weight: light;
-  z-index: 99;
+  z-index: 100;
 }
 
 .header{

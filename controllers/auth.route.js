@@ -44,7 +44,10 @@ async function loginPostAction(request, response) {
   }
   else {
     console.log('not checked');
+    console.log(request.body.uname);
+    console.log(request.body.psw);
     areValid = await userRepo.areValidCredentialsClient(request.body.uname, request.body.psw);
+    console.log('pass 1')
     if (areValid){
       user = await clientManaging.GetOneClient(request.body.uname);
       console.log(user);
