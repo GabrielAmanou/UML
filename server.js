@@ -68,6 +68,7 @@ app.use("/about", require("./controllers/about.route"));
 app.use("/meet_staff", require("./controllers/meet_staff.route"));
 app.use("/shelters", require("./controllers/shelters.route"));
 app.use("/auth", require("./controllers/auth.route"));
-app.use("/Admin", require("./controllers/editDatabase.route"))
+app.use("/Admin", require("./controllers/editDatabase.route"));
+app.use('/User', require('./controllers/User.route'))
 
 

@@ -53,8 +53,8 @@ module.exports = {
     async CreateStaff(staff_name, staff_email, staff_working_hours, staff_task, staff_shelter, staff_password){
         try{
             conn = await pool.getConnection();
-            sql = 'INSERT into staff VALUES (NULL, ?, ?, ?, ?, ?, ?)';
-            const [okPacket, fields] = await conn.execute(sql, [staff_name, staff_email, staff_working_hours, staff_task, staff_shelter, staff_password ]);
+            sql = 'INSERT into staff VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)';
+            const [okPacket, fields] = await conn.execute(sql, [staff_name, staff_email, staff_working_hours, staff_task, staff_shelter, staff_password, 'ADMIN' ]);
             conn.release();
             console.log("INSERT "+JSON.stringify(okPacket));
             return 0;

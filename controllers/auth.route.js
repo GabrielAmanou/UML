@@ -15,10 +15,14 @@ router.post('/login', loginPostAction)
 
 
 
+
+
+
 async function loginPostAction(request, response) {
 
   if (request.body.admin){
     console.log ('checked');
+    console.log(request.body.psw);
     areValid = await userRepo.areValidCredentialsStaff(request.body.uname, request.body.psw);
     if (areValid){
       user = await staffManaging.GetOnestaff(request.body.uname);
@@ -37,9 +41,10 @@ async function loginPostAction(request, response) {
     console.log('not checked');
     areValid = await userRepo.areValidCredentialsClient(request.body.uname, request.body.psw);
     if (areValid){
-      user = clientManaging.GetOneClient(request.body.uname);
+      user = await clientManaging.GetOneClient(request.body.uname);
+      console.log(user);
       request.login(user, function (err){
-        if (err) { console.log("ERROR"); console.log(err); return next(err); }
+        if (err) { console.log("ERROR here"); console.log(err); return next(err); }
         return response.redirect('/User')
       })
     }

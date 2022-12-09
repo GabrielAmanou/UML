@@ -27,10 +27,14 @@ module.exports = {
       // TODO: better salt+pw hash - COLLATE usually not needed
       const [rows, fields] = await conn.execute(sql, [username, password]);
       conn.release();
+      console.log('MAIL '+ username);
+      console.log('PSW '+ password);
 
       if (rows.length == 1 && rows[0].client_email === username) {
+        console.log('TRUE');
         return true;
       } else {
+        console.log('FALSE')
         return false;
       }
     } catch (err) {

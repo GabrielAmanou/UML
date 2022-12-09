@@ -72,7 +72,8 @@ INSERT into client VALUES
 (8, 'Gigi', 'gigi@gmail.com', 'Gygy653','CLIENT'),
 (9, 'Mickael', 'mickael@gmail.com', 'Micky111','CLIENT'),
 (10, 'Jared', 'jared@gmail.com', 'HelloJared666','CLIENT'),
-(11, 'Sonia', 'sonia@gmail.com', 'Ronaldo7','CLIENT');
+(11, 'Sonia', 'sonia@gmail.com', 'Ronaldo7','CLIENT'),
+(12, 'gab', 'gab', 'gab', 'CLIENT');
 
     
 INSERT INTO staff VALUES

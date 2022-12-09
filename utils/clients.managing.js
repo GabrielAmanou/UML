@@ -56,8 +56,8 @@ module.exports = {
     async CreateClient(client_name, client_email, client_password){
         try{
             conn = await pool.getConnection();
-            sql = 'INSERT into client VALUES (NULL, ?, ?, ?)';
-            const [okPacket, fields] = await conn.execute(sql, [client_name, client_email, client_password]);
+            sql = 'INSERT into client VALUES (NULL, ?, ?, ?, ?)';
+            const [okPacket, fields] = await conn.execute(sql, [client_name, client_email, client_password, 'CLIENT']);
             conn.release();
             console.log("INSERT "+JSON.stringify(okPacket));
             return 0;

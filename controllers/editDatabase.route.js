@@ -9,50 +9,50 @@ const auth = require("../utils/users.auth");
 
 // http://localhost:9000/edit
 router.get('/', auth.checkAuthenticationStaff(), AuthAction);
-router.get('/client', (req, res) => res.render('edit_client_view'));
-router.get('/pet', (req, res) => res.render('edit_pet_view'));
-router.get('/staff', (req, res) => res.render('edit_staff_view'));
-router.get('/shelter', (req, res) => res.render('edit_shelter_view'))
+router.get('/client',auth.checkAuthenticationStaff(), (req, res) => res.render('edit_client_view'));
+router.get('/pet', auth.checkAuthenticationStaff(), (req, res) => res.render('edit_pet_view'));
+router.get('/staff', auth.checkAuthenticationStaff(), (req, res) => res.render('edit_staff_view'));
+router.get('/shelter', auth.checkAuthenticationStaff(), (req, res) => res.render('edit_shelter_view'))
 
 async function AuthAction(request, response){
     response.render('edit_view');
 }
 
-router.get('/client/list', clientListAction);
-router.get('/client/add', ClientAdd)
-router.post('/client/finishadd', ClientFinishAdd)
-router.get('/client/del', ClientDel)
-router.post('/client/finishdel',ClientFinishDel)
-router.get('/client/update', ClientUpdate)
-router.post("/client/finishupdate", ClientFinishUpdate)
+router.get('/client/list', auth.checkAuthenticationStaff(), clientListAction);
+router.get('/client/add', auth.checkAuthenticationStaff(), ClientAdd)
+router.post('/client/finishadd', auth.checkAuthenticationStaff(), ClientFinishAdd)
+router.get('/client/del', auth.checkAuthenticationStaff(), ClientDel)
+router.post('/client/finishdel', auth.checkAuthenticationStaff(), ClientFinishDel)
+router.get('/client/update', auth.checkAuthenticationStaff(), ClientUpdate)
+router.post("/client/finishupdate", auth.checkAuthenticationStaff(), ClientFinishUpdate)
 
-router.get('/pet/list', petListeAction)
-router.get('/pet/add', PetAdd)
-router.post('/pet/finishadd', PetFinishAdd)
-router.get('/pet/Assign', PetAssignAction)
-router.post('/pet/AssignFinish', PetAssignFinish)
-router.get('/pet/update', PetUpdate)
-router.post('/pet/finishupdate', Petfinishupdate)
-router.get('/pet/del', Petdelete)
-router.post('/pet/delfinish', Petdelfinish)
-router.get('/pet/delass', Petdelass)
-router.post('/pet/delassfinish', Petdelassfinish)
+router.get('/pet/list', auth.checkAuthenticationStaff(), petListeAction)
+router.get('/pet/add', auth.checkAuthenticationStaff(), PetAdd)
+router.post('/pet/finishadd', auth.checkAuthenticationStaff(), PetFinishAdd)
+router.get('/pet/Assign', auth.checkAuthenticationStaff(), PetAssignAction)
+router.post('/pet/AssignFinish', auth.checkAuthenticationStaff(), PetAssignFinish)
+router.get('/pet/update', auth.checkAuthenticationStaff(), PetUpdate)
+router.post('/pet/finishupdate', auth.checkAuthenticationStaff(), Petfinishupdate)
+router.get('/pet/del', auth.checkAuthenticationStaff(), Petdelete)
+router.post('/pet/delfinish', auth.checkAuthenticationStaff(), Petdelfinish)
+router.get('/pet/delass', auth.checkAuthenticationStaff(), Petdelass)
+router.post('/pet/delassfinish', auth.checkAuthenticationStaff(), Petdelassfinish)
 
-router.get('/staff/list', staffListAction)
-router.get('/staff/add', StaffAdd)
-router.post('/staff/finishadd', StaffFinishAdd)
-router.get('/staff/del', StaffDel)
-router.post('/staff/finishdel', StaffFinishDel)
-router.get('/staff/update', StaffUpdate)
-router.post('/staff/finishupdate', StaffFinishUpdate)
+router.get('/staff/list', auth.checkAuthenticationStaff(), staffListAction)
+router.get('/staff/add', auth.checkAuthenticationStaff(), StaffAdd)
+router.post('/staff/finishadd', auth.checkAuthenticationStaff(), StaffFinishAdd)
+router.get('/staff/del', auth.checkAuthenticationStaff(), StaffDel)
+router.post('/staff/finishdel', auth.checkAuthenticationStaff(), StaffFinishDel)
+router.get('/staff/update', auth.checkAuthenticationStaff(), StaffUpdate)
+router.post('/staff/finishupdate', auth.checkAuthenticationStaff(), StaffFinishUpdate)
 
-router.get('/shelter/list', shelterListeAction)
-router.get('/shelter/add', ShelterAdd)
-router.post('/shelter/finishadd', ShelterFinishAdd)
-router.get('/shelter/del', ShelterDel)
-router.post('/shelter/finishdel', ShelterFinishDel)
-router.get('/shelter/update', ShelterUpdate)
-router.post('/shelter/finishupdate', ShelterFinishUpdate)
+router.get('/shelter/list', auth.checkAuthenticationStaff(), shelterListeAction)
+router.get('/shelter/add', auth.checkAuthenticationStaff(), ShelterAdd)
+router.post('/shelter/finishadd', auth.checkAuthenticationStaff(), ShelterFinishAdd)
+router.get('/shelter/del', auth.checkAuthenticationStaff(), ShelterDel)
+router.post('/shelter/finishdel', auth.checkAuthenticationStaff(), ShelterFinishDel)
+router.get('/shelter/update', auth.checkAuthenticationStaff(), ShelterUpdate)
+router.post('/shelter/finishupdate', auth.checkAuthenticationStaff(), ShelterFinishUpdate)
 
 
 
@@ -76,8 +76,8 @@ async function ClientAdd(request, response){
 
 async function ClientFinishAdd(request, response){
 
-    await clientedit.CreateClient(request.body.client_name, request.body.client_email, request.body.client_password)
-    response.redirect("/edit/client/list");
+    await clientedit.CreateClient(request.body.client_name, request.body.client_email, request.body.client_password);
+    response.redirect("/Admin/client/list");
 }
 
 async function ClientDel(request, response){
@@ -88,7 +88,7 @@ async function ClientDel(request, response){
 async function ClientFinishDel(request, response){
 
     await clientedit.DelClient(request.body.client_id)
-    response.redirect('/edit/client/list')
+    response.redirect('/Admin/client/list')
 }
 
 async function ClientUpdate(request, response){
@@ -98,7 +98,7 @@ async function ClientUpdate(request, response){
 async function ClientFinishUpdate(request, response){
     
     await clientedit.UpdateClient(request.body.client_id,request.body.client_name, request.body.client_email, request.body.client_password)
-    response.redirect('/edit/client/list')
+    response.redirect('/Admin/client/list')
 }
 
 async function PetAdd(request, response){
@@ -109,7 +109,7 @@ async function PetAdd(request, response){
 async function PetFinishAdd(request, response){
 
     await petedit.CreatePet(request.body.pet_owner_id, request.body.pet_name, request.body.pet_specie, request.body.pet_age, request.body.pet_diet, request.body.shelter_id)
-    response.redirect('/edit/pet/assign')
+    response.redirect('/Admin/pet/assign')
 }
 
 async function PetAssignAction(request, response){
@@ -124,7 +124,7 @@ async function PetAssignAction(request, response){
 async function PetAssignFinish(request, response){
 
     await petedit.Assign(request.body.pet_id, request.body.shelter_id);
-    response.redirect('/edit/pet/list')
+    response.redirect('/Admin/pet/list')
 }
 
 async function PetUpdate(request, response){
@@ -134,7 +134,7 @@ async function PetUpdate(request, response){
 async function Petfinishupdate(request, response){
 
     await petedit.UpdatePet(request.body.pet_id, request.body.pet_specie, request.body.pet_age, request.body.pet_diet);
-    response.redirect('/edit/pet/list');
+    response.redirect('/Admin/pet/list');
 }
 
 async function Petdelete(request, response){
@@ -146,7 +146,7 @@ async function Petdelete(request, response){
 async function Petdelfinish(request, response){
 
     await petedit.DelPet(request.body.pet_id);
-    response.redirect('/edit/pet/list');
+    response.redirect('/Admin/pet/list');
 }
 
 async function Petdelass(request, response){
@@ -159,7 +159,7 @@ async function Petdelass(request, response){
 async function Petdelassfinish(request, reponse){
 
     await petedit.Del_Assign_pet(request.body.pet_id);
-    reponse.redirect('/edit/pet/list')
+    reponse.redirect('/Admin/pet/list')
 }
 
 async function staffListAction(request, response){
@@ -177,7 +177,7 @@ async function StaffAdd(request, response){
 async function StaffFinishAdd(request, response){
 
     await staffedit.CreateStaff(request.body.staff_name, request.body.staff_email, request.body.staff_working_hours, request.body.staff_task, request.body.staff_shelter, request.body.staff_password)
-    response.redirect('/edit/staff/list');
+    response.redirect('/Admin/staff/list');
 }
 
 async function StaffDel(request, response) {
@@ -187,7 +187,7 @@ async function StaffDel(request, response) {
 
 async function StaffFinishDel(request, response){
     await staffedit.DelStaff(request.body.staff_id)
-    response.redirect('/edit/staff/list')
+    response.redirect('/Admin/staff/list')
 }
 
 async function StaffUpdate(request, response){
@@ -199,7 +199,7 @@ async function StaffUpdate(request, response){
 
 async function StaffFinishUpdate (request, response) {
     await staffedit.UpdateStaff(request.body.staff_id, request.body.staff_email, request.body.staff_working_hours, request.body.staff_task, request.body.staff_shelter, request.body.staff_password);
-    response.redirect('/edit/staff/list')
+    response.redirect('/Admin/staff/list')
 }
 
 async function shelterListeAction(request,response){
@@ -215,7 +215,7 @@ async function ShelterAdd(request,response){
 async function ShelterFinishAdd(request,response) {
     
     await sheltedit.CreateShelter(request.body.shelter_grade,request.body.shelter_equipment, request.body.shelter_nbr_max_of_pets, request.body.shelter_size, request.body.shelter_location)
-    response.redirect('/edit/shelter/list');
+    response.redirect('/Admin/shelter/list');
     
 }
 
@@ -226,7 +226,7 @@ async function ShelterDel(request,response){
 
 async function ShelterFinishDel(request, response){
     await sheltedit.DelShelter(request.body.shelter_id)
-    response.redirect('/edit/shelter/list')
+    response.redirect('/Admin/shelter/list')
 }
 
 async function ShelterUpdate(request, response) {
@@ -238,7 +238,7 @@ async function ShelterUpdate(request, response) {
 async function ShelterFinishUpdate(request, response) {
     
     await sheltedit.UpdateShelter(request.body.shelter_id, request.body.shelter_grade,request.body.shelter_equipment, request.body.shelter_nbr_max_of_pets, request.body.shelter_size)
-    response.redirect('/edit/shelter/list')
+    response.redirect('/Admin/shelter/list')
 }
 
 

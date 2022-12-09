@@ -31,7 +31,7 @@ module.exports = {
     return function (request, response, next) {
       if (request.isAuthenticated()) {
         
-        if (request.user.staff_role === 'ADMIN') { 
+        if (request.user.role === 'ADMIN') { 
           return next();
         } else {
           return response.end("401 Unautorized (bad user level)"); // TODO: Hierarchy
@@ -46,7 +46,7 @@ module.exports = {
   checkAuthenticationClient(){
     return function (request, response, next){
       if (request.isAuthenticated()){
-        if (request.user.client_role = 'CLIENT'){
+        if (request.user.role = 'CLIENT'){
           return next();
         }else{
           return response.end("YOU ARE AN ADMIN NO USE OF USER PAGE");
