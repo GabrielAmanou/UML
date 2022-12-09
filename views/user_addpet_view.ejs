@@ -3,7 +3,48 @@
 <div class="midcol">
     <div class="bloc">
 
-        
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <td style="font-weight: bolder">Shelter</td>
+                <td></td>
+                <td></td>
+                <td style="font-weight: bolder">Places Left</td>
+                <td></td>
+                <td></td>
+                <td style="font-weight: bolder">Selection</td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+
+            <% for (var c of shelter) { %>
+                <tr>
+                    <td><%= c.shelter_id %></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><%= c.shelter_grade %></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><%= c.shelter_equipment %></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><%= c.shelter_nbr_max_of_pets %></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><%= c.shelter_size %></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><%= c.shelter_location %></td>
+                </tr>
+            <% } %>
+
+
+
+        </table>
 
 
 
