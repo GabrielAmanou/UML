@@ -3,48 +3,68 @@
 <div class="midcol">
     <div class="bloc">
 
-        <table class="table table-striped table-bordered table-hover">
+        <center><table class="table table-striped table-bordered table-hover">
             <tr>
-                <td style="font-weight: bolder">Shelter</td>
+                <td style="font-weight: bolder">Location</td>
+                <td></td>
+                <td></td>
+                <td style="font-weight: bolder">Grade ( /5)</td>
+                <td></td>
+                <td></td>
+                <td style="font-weight: bolder">Size</td>
+                <td></td>
+                <td></td>
+                <td style="font-weight: bolder">Equipment</td>
                 <td></td>
                 <td></td>
                 <td style="font-weight: bolder">Places Left</td>
-                <td></td>
-                <td></td>
-                <td style="font-weight: bolder">Selection</td>
             </tr>
             <tr></tr>
             <tr></tr>
 
-            <% for (var c of shelter) { %>
+            <% for (const c of shelter) { %>
                 <tr>
-                    <td><%= c.shelter_id %></td>
-                    <td></td>
+                    <td><%= c.shelter_location %></td>
                     <td></td>
                     <td></td>
                     <td><%= c.shelter_grade %></td>
                     <td></td>
                     <td></td>
+                    <td><%= c.shelter_size %></td>
+                    <td></td>
                     <td></td>
                     <td><%= c.shelter_equipment %></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td><%= c.shelter_nbr_max_of_pets %></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><%= c.shelter_size %></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><%= c.shelter_location %></td>
+                    <td style="text-align:center; font-weight: bolder"><%= c.shelter_nbr_max_of_pets - c.nbr %></td>
                 </tr>
             <% } %>
 
 
 
-        </table>
+        </table></center>
+<br><br><br>
+        <form action="/User/addpetfinish" method="post">
+            <h3>Please select the shelter you want</h3>
+            
+            <center>Shelter location : <select name='shelter_id'>
+                <% for (const s of dispo) { %>
+                      <option value='<%= s.shelter_id %>'><%= s.shelter_location %> </option>
+                <% } %></center><br><br>
+                
+                <input type="text" class='no' name="" id="">
+
+                <h3>Now set your pet informations please</h3>
+                <br><br>
+
+                
+                Pet's Name: <input type="text" name="pet_name"><br><br>
+                Pet's Specie: <input type="text" name="pet_specie"><br><br>
+                Pet's Age: <input type="text" name="pet_age"><br><br>
+                Pet's Diet: <input type="text" name="pet_diet"><br><br>
+                <center><input type="submit" onclick=""FUNCTION CREATE PET"" value="Submit"></center>
+
+        </form>
 
 
 

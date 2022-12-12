@@ -23,11 +23,11 @@ module.exports = {
     async TEST(shelter_id){
         try{
             let conn = await pool.getConnection();
-            let sql = 'SELECT shelter_location, shelter.shelter_id, shelter_nbr_max_of_pets, count(stays_in.shelter_id) as nbmax FROM shelter INNER JOIN stays_in ON stays_in.shelter_id=shelter.shelter_id where stays_in.shelter_id = ?'
+            let sql = 'SELECT shelter_location, shelter.shelter_id, shelter_nbr_max_of_pets, shelter_equipment, shelter_size, shelter_grade, count(stays_in.shelter_id) as nbr FROM shelter INNER JOIN stays_in ON stays_in.shelter_id=shelter.shelter_id where stays_in.shelter_id = ?'
             const [rows, fields] = await conn.execute(sql, [ shelter_id ]);
             conn.release();
             console.log("Pets FETCHED: "+rows.length);
-            return rows;
+            return rows[0];
         }
         catch (err) {
             // TODO: log/send error ... 

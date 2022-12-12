@@ -6,11 +6,13 @@ const userRepo = require("../utils/users.repository");
 const auth = require("../utils/users.auth");
 const userf = require("../utils/user_functions");
 const petsManaging = require('../utils/pets.managing')
-const sheltrep = require("../utils/shelters.managing")
+const sheltrep = require("../utils/shelters.managing");
+const { response } = require('express');
 
 router.get('/', auth.checkAuthenticationClient(), Userpage);
 router.get('/takeback/:pet_id', auth.checkAuthenticationClient(), TakeBack)
-router.get('/addpet', AddPet)
+router.get('/addpet',auth.checkAuthenticationClient(), AddPet)
+router.post('/addpetfinish', auth.checkAuthenticationClient(), AddPetFinish)
 
 async function Userpage(request, response) {
     console.log(request.user.client_id);
@@ -32,9 +34,32 @@ async function AddPet(request, response) {
     for (let index = 0; index < 4; index++) {
         sh[index] = await userf.TEST(index+1);
     }
-    console.log(sh);
+    //console.log(sh);
+    //console.log(sh[0].shelter_location);
+
+    var sh_dispo = new Array();
+
+    for (const c of sh) {
+        console.log(c.shelter_nbr_max_of_pets);
+        console.log(c.nbr);
+        if(c.shelter_nbr_max_of_pets > c.nbr){
+            console.log('append');
+            sh_dispo.push(c);
+        }
+    }
+
+    console.log(sh_dispo)
     
-    response.render('user_addpet_view', { });
+    response.render('user_addpet_view', { 'shelter': sh, 'dispo': sh_dispo });
+}
+
+async function AddPetFinish(request, response){
+
+    id = await petsManaging.CreatePet(request.user.client_id, request.body.pet_name, request.body.pet_specie, request.body.pet_age, request.body.pet_diet);
+    await petsManaging.Assign(id, request.body.shelter_id);
+
+    response.render('user_petadd_success')
+
 }
 
 

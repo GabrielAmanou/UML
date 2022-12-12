@@ -61,7 +61,7 @@ module.exports = {
             const [okPacket, fields3] = await conn.execute(sql, [pet_owner_id, pet_name, pet_specie, pet_age, pet_diet]);
             conn.release();
             console.log("INSERT "+JSON.stringify(okPacket));
-            return 0;
+            return okPacket.insertId;
         }
         catch (err) {
             console.log(err);
@@ -99,33 +99,6 @@ module.exports = {
         }
     },
 
-    async Assignpet(pet_name, shelter_location){
-        try{
-            let conn = await pool.getConnection();
-            sql = 'SELECT pet_id FROM pets where pet_name=?'
-            const [p_id, fields1] = await conn.execute(sql, [ pet_name ]);
-            conn.release();
-            let pet_id = parseInt(p_id[0]);
-            console.log("Get ID pet" + p_id[0]);
-
-            conn = await pool.getConnection();
-            sql = 'SELECT shelter_id FROM shelter where shelter_name';
-            const [s_id, fields2] = await conn.execute(sql, [ shelter_location ]);
-            let shelter_id = parseInt(s_id[0]);
-            console.log('Get ID shelter' + s_id[0]);
-
-            conn = await pool.getConnection();
-            sql = 'INSERT INTO stays_in VALUES (?, ?)';
-            const [okPacket, fields3] = await conn.execute(sql, [ pet_id, shelter_id ]);
-            conn.release;
-            console.log('INSERT'+JSON.stringify(okPacket));
-            return okPacket.insertId;
-        }
-        catch (err) {
-            console.log(err);
-            throw err; 
-        }
-    },
 
     async Del_Assign_pet(pet_id){
         try{

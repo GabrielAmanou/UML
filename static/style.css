@@ -13,17 +13,13 @@ body {
   min-height: 100%;
 	}
 
-.adminbut button{
+btn{
   position: fixed;
   width: 10%;
-  margin-right: 2px;
-  top: 5%;
   right: 0;
-  background-color: rgba(94, 255, 255, 0.404);
-  font-weight: light;
-  z-index: 100;
+  z-index: 99;
 }
-
+  
 .header{
   position: relative;
 }

@@ -2,7 +2,7 @@
 const { response } = require('express');
 const express = require('express');
 const router = express.Router();
-//const auth = require("../utils/users.auth");
+const auth = require("../utils/users.auth");
 const userRepo = require("../utils/users.repository");
 const staffManaging = require('../utils/staff.managing');
 const clientManaging = require('../utils/clients.managing')
@@ -13,8 +13,19 @@ router.get('/', (req, res) => res.render('auth_view'));
 router.get('/sign_up', (req, res) => res.render('sign_up_view'));
 router.post('/signupfinish', SignUpFinish)
 router.post('/login', loginPostAction)
+router.get('/redirect', Redirect)
 
-
+async function Redirect(request, response){
+  if (request.isAuthenticated()){
+    if(request.user.role == 'CLIENT'){
+      response.redirect('/User');
+    }else{
+      response.redirect('/Admin');
+    } 
+  }else {
+    response.redirect('/auth')
+  }
+}
 
 async function SignUpFinish(request, response){
   await clientManaging.CreateClient(request.body.client_name, request.body.client_email, request.body.client_password);
