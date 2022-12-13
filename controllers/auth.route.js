@@ -75,12 +75,10 @@ async function loginPostAction(request, response) {
 }
 
 async function Logout(request, response){
-  if(request.isAuthenticated()){
-    request.logout(function(err) {
-      if (err) { return next(err); }
-      response.redirect('/');
-    })
-  }
+  request.logout(function(err) {
+    if (err) { return next(err); }
+    response.redirect('/');
+  })
 }
 
 
