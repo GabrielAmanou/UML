@@ -6,11 +6,28 @@
       <p>Please, give us all the details of your desired changes.</p> <br>
       <form id=shelterUpdate action="/Admin/shelter/finishupdate" method="post">
         Shelter's ID: <input type="text" name="shelter_id"><br><br>
-        Shelter Grade: <input type="text" name="shelter_grade"><br><br>
-        Shelter Equipment: <input type="text" name="shelter_equipment"><br><br>
+        Shelter Grade: <select type="text" name="shelter_grade">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select><br><br>
+        Shelter Equipment: <select type="text" name="shelter_equipment">
+          <option>minimum</option>
+          <option>average</option>
+          <option>good</option>
+          <option>well equipped</option>
+        </select><br><br>
         Maximum number of pets possible : <input type="text" name="shelter_nbr_max_of_pets"><br><br>
-        Shelter Size: <input type="text" name="shelter_size"> <br><br>
-        <input type="submit" onclick=""FUNCTION UPDATE SHELTER"" value="Submit"></form>
+        Shelter Size: <select type="text" name="shelter_size"> 
+          <option>Very small</option>
+          <option>Small</option>
+          <option>Medium</option>
+          <option>Large</option>
+          <option>Very large</option>
+        </select><br><br>
+        <input type="submit" onclick=""FUNCTION UPDATE SHELTER"" value="Submit"></form> <br><br>
         <button style="background-color: rgb(0,0,0); width: 20%; position: center;" onclick="history.back()">Go Back</button>
 
     </div>

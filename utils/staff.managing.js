@@ -6,7 +6,7 @@ module.exports = {
     async GetAllstaff(){
         try{
             let conn = await pool.getConnection();
-            let sql = 'SELECT * FROM staff'
+            let sql = 'SELECT staff_id, staff_name, staff_email, staff_working_hours, staff_task, staff_password, shelter_location FROM staff INNER JOIN shelter ON staff_shelter=shelter_id'
             const [rows, fields] = await conn.execute(sql);
             conn.release();
             console.log("Client FETCHED: "+rows.length);

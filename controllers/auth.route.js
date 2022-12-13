@@ -14,6 +14,7 @@ router.get('/sign_up', (req, res) => res.render('sign_up_view'));
 router.post('/signupfinish', SignUpFinish)
 router.post('/login', loginPostAction)
 router.get('/redirect', Redirect)
+router.get('/logout', Logout)
 
 async function Redirect(request, response){
   if (request.isAuthenticated()){
@@ -72,6 +73,16 @@ async function loginPostAction(request, response) {
     }
   }
 }
+
+async function Logout(request, response){
+  if(request.isAuthenticated()){
+    request.logout(function(err) {
+      if (err) { return next(err); }
+      response.redirect('/');
+    })
+  }
+}
+
 
 
 

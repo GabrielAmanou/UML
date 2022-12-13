@@ -5,7 +5,7 @@ module.exports = {
     async GetAllpets(){
         try{
             let conn = await pool.getConnection();
-            let sql = 'SELECT pets.pet_id, pet_owner_id, pet_name, pet_specie, pet_diet, shelter_location FROM pets INNER JOIN stays_in ON pets.pet_id = stays_in.pet_id INNER JOIN shelter ON stays_in.shelter_id = shelter.shelter_id'
+            let sql = 'SELECT pets.pet_id, pet_owner_id, pet_name, pet_age, pet_specie, pet_diet, shelter_location FROM pets INNER JOIN stays_in ON pets.pet_id = stays_in.pet_id INNER JOIN shelter ON stays_in.shelter_id = shelter.shelter_id'
             const [rows, fields] = await conn.execute(sql);
             conn.release();
             console.log("Pets FETCHED: "+rows.length);

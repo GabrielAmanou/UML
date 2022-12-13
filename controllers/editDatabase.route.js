@@ -65,6 +65,7 @@ async function clientListAction(request, response){
 
 async function petListeAction(request, response){
     var pets = await petedit.GetAllpets();
+    console.log(pets);
 
     response.render("pet_list_view", {"pets": pets});
 }
