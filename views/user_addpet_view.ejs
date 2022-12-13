@@ -47,14 +47,12 @@
         <form action="/User/addpetfinish" method="post">
             <h3>Please select the shelter you want</h3>
             
-            <center>Shelter location : <select name='shelter_id'>
+            Shelter location : <select name='shelter_id'>
                 <% for (const s of dispo) { %>
                       <option value='<%= s.shelter_id %>'><%= s.shelter_location %> </option>
-                <% } %></center><br><br>
-                
-                <input type="text" class='no' name="" id="">
+                <% } %></select><br><br>
 
-                <h3>Now set your pet informations please</h3>
+                <h3>Now set your pet information please</h3>
                 <br><br>
 
                 
@@ -65,9 +63,6 @@
                 <center><input type="submit" onclick=""FUNCTION CREATE PET"" value="Submit"></center>
 
         </form>
-
-
-
 
     </div>
 </div>
