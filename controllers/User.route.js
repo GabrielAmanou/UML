@@ -15,7 +15,6 @@ router.get('/addpet',auth.checkAuthenticationClient(), AddPet)
 router.post('/addpetfinish', auth.checkAuthenticationClient(), AddPetFinish)
 
 async function Userpage(request, response) {
-    console.log(request.user.client_id);
     pets = await userf.Get_Pets_of_Client(request.user.client_id);
 
     response.render('user_page_view', { 'pets': pets});
