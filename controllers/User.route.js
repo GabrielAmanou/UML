@@ -30,8 +30,10 @@ async function TakeBack(request, response) {
 
 async function AddPet(request, response) {
     var sh = new Array();
-    //shelters = await sheltrep.GetAllShelter();
-    for (let index = 0; index < 4; index++) {
+    console.log('test')
+    var nbsh = await userf.countshelter(); 
+    console.log(nbsh);
+    for (let index = 0; index < nbsh.c; index++) {
         sh[index] = await userf.TEST(index+1);
     }
     //console.log(sh);

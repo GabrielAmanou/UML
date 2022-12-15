@@ -35,6 +35,24 @@ module.exports = {
             throw err; // return false ???
         }
 
+    },
+
+    async countshelter(){
+
+        try{
+            let conn = await pool.getConnection();
+            let sql = 'SELECT COUNT(*) as c FROM shelter'
+            const [rows, fields] = await conn.execute(sql);
+            conn.release();
+            console.log("Pets FETCHED: "+rows.length);
+            return rows[0];
+        }
+        catch (err) {
+            // TODO: log/send error ... 
+            console.log(err);
+            throw err; // return false ???
+        }
+
     }
 
 
